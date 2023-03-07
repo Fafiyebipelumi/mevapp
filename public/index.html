@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <title>MEV Suite</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    .loading-wrapper {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      place-items: center;
+    }
+
+    .loading {
+      border: 15px solid #3A915B;
+      border-top: 15px solid #CB9F00;
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      background-color: #fff;
+      animation: spin 2s linear infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <div id='spinner' class='loading-wrapper'>
+    <!-- <img src="Mevlogo.png" alt="" width='50' height='50'> -->
+    <div class='loading'></div>
+  </div>
+  <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut facere asperiores, deserunt veritatis eius aliquid expedita ipsa, totam, laborum atque obcaecati mollitia numquam. Eveniet, quos. Illum eveniet libero labore dignissimos, tempore dolorum facere quisquam, atque magni, qui optio. Ut sequi enim doloribus dignissimos! Id unde cupiditate culpa veritatis architecto ut numquam sed debitis tempora fugit. Maxime inventore sequi obcaecati veniam aliquid, qui maiores dolore voluptas suscipit cupiditate ut provident nemo excepturi ratione repellat omnis modi molestiae, aut culpa iste non et fuga? Harum repellendus nostrum perferendis doloremque fugit nesciunt sit quod, consequuntur eaque! Nobis suscipit perferendis minus provident voluptates laborum alias laboriosam eligendi. Itaque culpa sint quod distinctio beatae molestiae quos quas aliquid nam cumque similique harum dicta magni accusamus aperiam illum, expedita consectetur veritatis fuga minus excepturi perspiciatis. Quia eveniet omnis a, incidunt eligendi similique distinctio impedit sunt, in voluptates perspiciatis minus architecto atque veritatis, rem maiores non aliquid quam magnam. Molestiae laborum nam reprehenderit explicabo molestias a quibusdam rem, eum, suscipit iure provident amet veniam quos minima cum corrupti. Eum soluta fugiat hic voluptate cumque, tenetur tempore aliquam! Perspiciatis quaerat iure unde eos animi aliquid veritatis obcaecati exercitationem tenetur laborum impedit excepturi sit velit dolore ex eum provident molestiae ducimus incidunt ab, enim nisi fugiat. Quo excepturi, nulla accusamus quasi aliquid dolorem neque tempora veniam praesentium adipisci expedita maiores? Sint quas labore quod. Obcaecati repudiandae itaque nostrum quis cupiditate tenetur ullam harum blanditiis eligendi officiis alias ea sed quibusdam, minima, dolores esse veniam dolorem perferendis atque est. Provident sequi pariatur deserunt adipisci, consequuntur nisi tempore voluptate mollitia qui possimus velit nesciunt vitae. Corporis laboriosam adipisci, doloribus qui ipsa atque eligendi ut alias ad quaerat pariatur omnis eaque officia rerum? Aliquam nostrum voluptatum hic consequatur? Facilis vitae sapiente vero tempore. Perspiciatis, a. Nam fugit aperiam alias. Distinctio quia vero libero, labore porro, minima omnis facere maxime odio ab unde nostrum eaque exercitationem aliquam quod asperiores sit est expedita nihil, eos harum earum enim doloremque aperiam? At minima dicta porro! Quam aperiam consequatur neque distinctio provident libero voluptatum natus ipsam, fugit necessitatibus tenetur, minus, voluptas rem similique! Modi quisquam placeat recusandae a possimus voluptatem deserunt ratione voluptates fuga. Sapiente minus est, suscipit natus voluptatem facilis quia dolores voluptatum molestiae dicta accusantium id impedit minima veritatis adipisci, nobis inventore, ea mollitia deleniti vitae quisquam. Quidem iure temporibus ut officia modi. Repellat cupiditate hic labore enim in saepe facere asperiores, maxime molestias porro atque reprehenderit ipsum voluptatibus molestiae nulla nostrum illo eum odio explicabo quos! Doloribus rerum illo laudantium earum amet quas nisi nam iste, similique ipsa a delectus alias in eveniet, quis, autem quam quos sint atque dicta corporis. Officiis a architecto sequi, asperiores iusto consectetur odit laudantium libero natus aliquid! Explicabo recusandae quia maiores amet facilis voluptates laborum tempora accusantium reiciendis consequatur rerum eligendi maxime obcaecati quod aliquam esse nobis, quidem expedita. Porro laudantium culpa omnis sint voluptates dolorem, possimus doloremque assumenda ab. Quibusdam explicabo sunt maiores! Aliquid, incidunt ipsa? Amet, velit nisi labore rerum sunt accusamus in magnam! Maiores.</p> -->
+  <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus modi recusandae, error eius architecto corporis praesentium perferendis neque voluptatibus. Nemo blanditiis ut sunt officiis beatae exercitationem eligendi, atque expedita sint, voluptatibus doloremque autem, at illo. Quibusdam soluta ratione, quam unde molestiae tenetur hic atque. Esse animi maxime magni excepturi doloremque ad accusamus modi at rem ea, nostrum sapiente assumenda quod nam amet nobis sint dicta veniam ratione laboriosam saepe sequi officia molestiae. Iste inventore quo ipsum facere qui officia earum consequuntur assumenda voluptas praesentium maxime aperiam, officiis, commodi enim possimus asperiores magni molestiae. Tempore consequuntur, corporis ducimus cum autem veritatis non facere exercitationem ullam in impedit amet cupiditate aliquam nemo odit obcaecati culpa. Sapiente tempore similique totam sed dolor magnam.</p> -->
+  <!-- <div>
+    <h2>I love MEV team</h2>
+    <p>They are the best</p>
+    
+  </div> -->
+</body>
+
+</html>
+
+<!-- Good day, 
+
+This is from MEV Suite, we're trying to send campaign through Email and this is a test for it.
+
+Kindly note this dummy texts.
+
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut facere asperiores, deserunt veritatis eius aliquid expedita ipsa, totam, laborum atque obcaecati mollitia numquam. Eveniet, quos. Illum eveniet libero labore dignissimos, tempore dolorum facere quisquam, atque magni, qui optio. Ut sequi enim doloribus dignissimos! Id unde cupiditate culpa veritatis architecto ut numquam sed debitis tempora fugit. Maxime inventore sequi obcaecati veniam aliquid, qui maiores dolore voluptas suscipit cupiditate ut provident nemo excepturi ratione repellat omnis modi molestiae, aut culpa iste non et fuga? Harum repellendus nostrum perferendis doloremque fugit nesciunt sit quod, consequuntur eaque! Nobis suscipit perferendis minus provident voluptates laborum alias laboriosam eligendi. Itaque culpa sint quod distinctio beatae molestiae quos quas aliquid nam cumque similique harum dicta magni accusamus aperiam illum, expedita consectetur veritatis fuga minus excepturi perspiciatis. Quia eveniet omnis a, incidunt eligendi similique distinctio impedit sunt, in voluptates perspiciatis minus architecto atque veritatis, rem maiores non aliquid quam magnam. Molestiae laborum nam reprehenderit explicabo molestias a quibusdam rem, eum, suscipit iure provident amet veniam quos minima cum corrupti. Eum soluta fugiat hic voluptate cumque, tenetur tempore aliquam! Perspiciatis quaerat iure unde eos animi aliquid veritatis obcaecati exercitationem tenetur laborum impedit excepturi sit velit dolore ex eum provident molestiae ducimus incidunt ab, enim nisi fugiat. Quo excepturi, nulla accusamus quasi aliquid dolorem neque tempora veniam praesentium adipisci expedita maiores? Sint quas labore quod. Obcaecati repudiandae itaque nostrum quis cupiditate tenetur ullam harum blanditiis eligendi officiis alias ea sed quibusdam, minima, dolores esse veniam dolorem perferendis atque est. Provident sequi pariatur deserunt adipisci, consequuntur nisi tempore voluptate mollitia qui possimus velit nesciunt vitae. Corporis laboriosam adipisci, doloribus qui ipsa atque eligendi ut alias ad quaerat pariatur omnis eaque officia rerum? Aliquam nostrum voluptatum hic consequatur? Facilis vitae sapiente vero tempore. Perspiciatis, a. Nam fugit aperiam alias. Distinctio quia vero libero, labore porro, minima omnis facere maxime odio ab unde nostrum eaque exercitationem aliquam quod asperiores sit est expedita nihil, eos harum earum enim doloremque aperiam? At minima dicta porro!
+
+Thank you so much
+
+From: https://mevapp.com -->

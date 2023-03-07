@@ -1,0 +1,31 @@
+h3 {
+    text-align: center;
+}
+
+.create-campaign {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.create-campaign h1 {
+    font-style: normal;
+    font-weight: 600;
+    font-family: 'Montserrat';
+    font-size: 36px;
+    color: #57BF7E;
+}
+
+.create-campaign button {
+    padding: 15px 20px;
+    background: #57BF7E;
+    border-radius: 10px;
+    color: #fff;
+    font-family: 'Montserrat';
+    font-style: normal;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 18px;
+    border: none;
+}

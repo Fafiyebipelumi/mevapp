@@ -1,0 +1,45 @@
+.design-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.template {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 30px;
+    border: 5px solid #DDF2E5;
+    width: 292px;
+    height: 278px;
+    border-radius: 50px;
+}
+
+.template h3 {
+    font-style: normal;
+    font-weight: 600;
+    font-family: 'Montserrat';
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 30px;
+    color: #4A4A4A;
+}
+
+.template img {
+    margin-bottom: 50px;
+}
+
+.template button {
+    background: #DDF2E5;
+    border-radius: 10px;
+    color: #3A915B;
+    font-style: normal;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Montserrat';
+    font-size: 18px;
+    border: none;
+    padding: 10px 15px;
+}

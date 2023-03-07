@@ -1,0 +1,37 @@
+[
+  {
+    "campaign_name": "Dean",
+    "last_name": "Eard",
+    "email": "deard0@scribd.com",
+    "date_and_time": "12/31/2021",
+    "modified": "12/3/2021"
+  },
+  {
+    "first_name": "Storm",
+    "last_name": "Bruggeman",
+    "email": "sbruggeman1@odnoklassniki.ru",
+    "date_and_time": "1/8/2022",
+    "modified": "6/27/2022"
+  },
+  {
+    "first_name": "Odey",
+    "last_name": "Clayill",
+    "email": "oclayill2@liveinternet.ru",
+    "date_and_time": "4/12/2022",
+    "modified": "5/29/2022"
+  },
+  {
+    "first_name": "Frederick",
+    "last_name": "Dimnage",
+    "email": "fdimnage3@canalblog.com",
+    "date_and_time": "12/1/2021",
+    "modified": "2/28/2022"
+  },
+  {
+    "first_name": "Arthur",
+    "last_name": "Sandford",
+    "email": "asandford4@mail.ru",
+    "date_and_time": "12/9/2021",
+    "modified": "12/14/2021"
+  }
+]
