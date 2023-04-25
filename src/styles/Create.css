@@ -1,0 +1,106 @@
+.create-wrapper {
+    display: flex;
+}
+
+.create {
+    padding: 0;
+    max-width: 1300px;
+    margin: auto;
+    /* background: #fff;
+    height: 100px;
+    top: 0;
+    position: sticky;
+    max-width: 1300px;
+    margin: auto;
+    margin-left: 200px; */
+}
+
+.create-options {
+    max-width: 1400px;
+    /* margin: auto; */
+    margin-top: 20px;
+    padding: 0;
+}
+
+.create-active {
+    margin-top: 20px;
+}
+
+.create-close-icon {
+    margin-top: 10px;
+    margin-right: 200px;
+}
+
+.create-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.create-buttons {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-right: 80px;
+}
+
+.create-buttons button {
+    border: none;
+    padding: 15px 20px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.create-buttons button:nth-child(1) {
+    border-radius: 10px;
+    background: #DDF2E5;
+    color: #3A915B;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.create-buttons button:nth-child(2) {
+    background: #E5B404;
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: 600;
+    font-family: 'Montserrat';
+    font-size: 18px;
+    color: #fff;
+}
+
+.create-buttons button:nth-child(3) {
+    background: #57BF7E;
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: 600;
+    font-family: 'Montserrat';
+    font-size: 18px;
+    color: #fff;
+}
+
+.create-avatar {
+    width: 55px;
+    height: 55px;
+    border-radius: 27.5px;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 25px;
+}
+
+.create-menu.active {
+    left: 0;
+    /* transition: 200ms; */
+    margin-top: -180px;
+}
+
+.create-menu {
+    position: fixed;
+    left: -100%;
+}

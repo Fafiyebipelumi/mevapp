@@ -1,0 +1,142 @@
+.campaign {
+    max-width: 1200px;
+    margin: auto;
+    display: block;
+}
+
+/* .campaign-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.campaign-header h1 {
+    font-style: normal;
+    font-weight: 600;
+    font-family: 'Montserrat';
+    font-size: 36px;
+    color: #57BF7E;
+}
+
+.campaign-header button {
+    padding: 15px 20px;
+    background: #57BF7E;
+    border-radius: 10px;
+    color: #fff;
+    font-family: 'Montserrat';
+    font-style: normal;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 18px;
+    border: none;
+}
+ */
+.campaign-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.campaign-options {
+    display: flex;
+    align-items: center;
+    margin-top: -20px;
+}
+
+.campaign-options p {
+    padding: 10px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: #424242;
+}
+
+.campaign-options p img {
+    padding-right: 10px;
+}
+
+.campaign-search {
+    background-color: #F8F8F8;
+    display: flex;
+    align-items: center;
+    border-radius: 60.0913px;
+    margin-left: 30px;
+    margin-top: -20px;
+}
+
+
+.campaign-search input {
+    padding: 15px 15px;
+    width: 300px;
+    /* height: 20px; */
+    background: transparent;
+    outline: none;
+    border: none;
+}
+
+.campaign-search input::placeholder {
+    font-style: normal;
+    font-family: 'Montserrat';
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 15px;
+    color: #ACACAC;
+}
+
+@media screen and (max-width: 960px) {
+    .campaign-wrapper {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .campaign-header h1 {
+        font-size: 18px;
+    }
+
+    .campaign-search input {
+        width: 200px;
+        height: 10px;
+    }
+}
+
+.error {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    display: grid;
+    place-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.loading-tables {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    display: grid;
+    place-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.btn-loading {
+    display: flex;
+    margin-right: 20px;
+    align-items: center;
+    justify-content: space-between;
+}

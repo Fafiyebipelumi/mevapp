@@ -1,0 +1,48 @@
+.single-campaign-container {
+    background: #E5B404;
+    padding: 20px 20px 20px 50px;
+    display: flex;
+    margin-top: 50px;
+    align-items: center;
+    justify-content: center;
+    height: 72px;
+}
+
+.single-campaign-container tr:nth-child(1) {
+    padding-right: 20rem;
+}
+
+.single-campaign-container tr {
+    padding: 50px;
+    margin-left: 20px;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.single-list {
+    display: flex;
+    padding: 20px 20px 20px 50px;
+    align-items: center;
+    justify-content: center;
+    height: 72px;
+}
+
+.single-list:nth-child(even) {
+    background-color: #F2F2F2;
+}
+
+.single-list tr:nth-child(1) {
+    padding-left: 10rem;
+    width: 100%;
+}
+
+.single-list tr:nth-child(3) {
+    padding-right: 20px;
+}
+
+.single-list tr {
+    padding: 0 40px;
+    color: #000;
+    width: 25%;
+    margin-right: 25px;
+}

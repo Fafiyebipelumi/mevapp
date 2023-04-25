@@ -1,0 +1,110 @@
+.message-heading {
+    margin-top: 100px;
+    height: 30px;
+}
+
+.message-heading h1 {
+    text-align: center;
+    color: #4A4A4A;
+    font-style: normal;
+    font-weight: 500;
+    font-family: 'Montserrat';
+    font-size: 40px;
+}
+
+.message-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+}
+
+.mail-option {
+    background-color: #57BF7E;
+    width: 250px;
+    height: 250px;
+    margin: 30px;
+    border-radius: 125px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.message-container a {
+    text-decoration: none;
+}
+
+/* 
+.mail-option img {
+    width: 50.99px;
+    height: 50.8px;
+} */
+
+.mail-option h2 {
+    text-align: center;
+    color: #DDF2E5;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+}
+
+.sms-option {
+    background-color: #FAF0CD;
+    width: 250px;
+    height: 250px;
+    margin: 30px;
+    border-radius: 125px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sms-option h2 {
+    text-align: center;
+    color: #4A4A4A;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+}
+
+.sms-option img {
+    width: 50.99px;
+    height: 50.8px;
+}
+
+.whatsapp-option {
+    background-color: #DDF2E5;
+    width: 250px;
+    height: 250px;
+    margin: 30px;
+    border-radius: 125px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.whatsapp-option img {
+    width: 50.99px;
+    height: 50.8px;
+}
+
+.whatsapp-option h2 {
+    text-align: center;
+    color: #4A4A4A;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+}
+
+@media screen and (max-width: 960px) {
+    .message-heading h1 {
+        font-size: 30px;
+    }
+
+    .message-container {
+        flex-direction: column;
+    }
+}
