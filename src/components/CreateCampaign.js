@@ -55,7 +55,7 @@ const CreateCampaign = () => {
                 <h1>Campaigns</h1>
                 <div>
                     {!btnLoading && <button onClick={handleCreateNewCampaign}><FaPlus style={{ border: '2px', paddingRight: '5px' }} /> New Campaign</button>}
-                    {btnLoading && <button disabled>Loading... <TailSpin height='20' width='20' color='#fff' radius='1' visible={true} /></button>}
+                    {btnLoading && <button disabled>Loading... <TailSpin height='15' width='15' color='#fff' radius='1' visible={true} /></button>}
                 </div>
             </div>
         </div>

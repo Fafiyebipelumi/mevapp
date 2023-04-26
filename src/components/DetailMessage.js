@@ -9,7 +9,7 @@ const DetailMessage = ({ detail }) => {
             <Scrollbars>
                 <div className='detail-message-container'>
                     <p>{parse(detail.message)}</p>
-                </div>
+                </div> 
             </Scrollbars>
         </div>
     )

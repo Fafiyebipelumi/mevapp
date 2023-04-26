@@ -10,7 +10,7 @@ import SelectDropdown from './SelectDropdown';
 import { AiOutlineArrowLeft } from 'react-icons/ai'; 
 import { FaBars } from 'react-icons/fa';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-// import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 // import 'sweetalert2/src/sweetalert2.scss'
 import axios from 'axios';
 // import DesignContent from './DesignContent';

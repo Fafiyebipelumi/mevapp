@@ -14,7 +14,7 @@ const Details = ({ detail, sidebar }) => {
         <div className='detail'>
             <div className='details'>
                 {/* <div className='detail-container'> */}
-                <div className='detail__wrapper'>
+                <div className='detail__wrapper'> 
                     <h2>{detail.subject}</h2>
                     <div className='detail-info'>
                         <div className='detail-option'>
