@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { FaCaretDown } from 'react-icons/fa';
 import '../styles/SelectDropdown.css';
 import DisplayTableEmail from './DisplayTableEmail';
+import { TailSpin } from 'react-loader-spinner';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import InputCSV from './InputCSV'
 import { baseURL } from '../interceptor/axios';
 import Loading from '../assets/Loaders/loading_big.gif';
 
-const SelectDropdown = ({ showDropdown, setRecipients, handleSubmit, setCsv }) => {
+const SelectDropdown = ({ showDropdown, setRecipients, handleSubmit, setCsv, loading }) => {
 
     const [isActive, setIsActive] = useState(false);
     const [useTables, setUseTables] = useState(false);
@@ -85,7 +86,7 @@ const SelectDropdown = ({ showDropdown, setRecipients, handleSubmit, setCsv }) =
             </div>
             <div className='drop-down-button'>
                 <div className='dropdown-button'>
-                    <button onClick={handleSubmit}>Save</button>
+                    <button onClick={handleSubmit}>{!loading ? 'Save' : <TailSpin height='25' width='25' color='#3A915B' radius='3' visible={true} />}</button>
                     <button onClick={showDropdown}>Cancel</button>
                 </div>
                 {/* <ToastContainer

@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { baseURL } from '../interceptor/axios';
 import RichTextImage from '../assets/text.png';
 import SelectDropdown from './SelectDropdown';
+import { TailSpin } from 'react-loader-spinner';
 import { AiOutlineArrowLeft } from 'react-icons/ai'; 
 import { FaBars } from 'react-icons/fa';
 import { Link, useNavigate, useParams } from 'react-router-dom';
@@ -24,6 +25,7 @@ import Create from './Create';
 const CreateOptions = ({ sidebar, showSidebar }) => {
     const [invalidEmail, setInvalidEmail] = useState('')
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
     const [dropdown, setDropdown] = useState(true);
     const [emailDropdown, setEmailDropdown] = useState(true);
     const [subjectDropdown, setSubjectDropdown] = useState(true);
@@ -68,6 +70,7 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
         // }
 
         // console.log(senderName, senderEmail, subject);
+        setLoading(true)
         await axios.post(`${baseURL}/messaging/userUpdateCampaign.php`, form)
             .then((response) => {
                 console.log(response, 'User Updated Successfully');
@@ -76,10 +79,12 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                 } else {
                     toast.error(response.data.message)
                 }
+                setLoading(false)
             })
             .catch((error) => {
                 console.log(error.message)
                 setError(error.message)
+                setLoading(false)
             })
     }
 
@@ -160,7 +165,7 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                                 <div className={dropdown ? 'create-option-clear' : 'create-option-select'}>
                                     <div className={sidebar ? 'create-select-width' : 'create-select-width-active'}>
                                         <div className='create-select-dropdown'>
-                                            <SelectDropdown showDropdown={showDropdown} setRecipients={setRecipients} handleSubmit={handleSubmit} setCsv={setCsv} />
+                                            <SelectDropdown loading={loading} showDropdown={showDropdown} setRecipients={setRecipients} handleSubmit={handleSubmit} setCsv={setCsv} />
                                         </div>
                                         {/* <ToastContainer 
                                         position="top-right"
@@ -233,7 +238,7 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                                                 </div>
                                             </div>
                                             <div className='email-create-option-buttons'>
-                                                <button type='submit'>Save</button>
+                                                <button type='submit'>{!loading ? 'Save' : <TailSpin height='25' width='25' color='#3A915B' radius='3' visible={true} />}</button>
                                                 <span onClick={showEmailDropdown}>Cancel</span>
                                             </div>
                                         </form>
@@ -268,7 +273,7 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                                                 placeholder='Preview Text'
                                             />
                                             <div className='email-create-option-buttons'>
-                                                <button type='submit'>Save</button>
+                                                <button type='submit'>{!loading ? 'Save' : <TailSpin height='25' width='25' color='#3A915B' radius='3' visible={true} />}</button>
                                                 <span onClick={showSubjectDropdown}>Cancel</span>
                                             </div>
                                         </form>
@@ -328,7 +333,7 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                                         <div>
                                             <HtmlText message={message} setMessage={setMessage} />
                                             <div className='email-create-option-buttons'>
-                                                <button onClick={handleSubmit}>Save</button>
+                                                <button onClick={handleSubmit}>{!loading ? 'Save' : <TailSpin height='25' width='25' color='#3A915B' radius='3' visible={true} />}</button>
                                                 <span>Cancel</span>
                                             </div>
                                         </div>
