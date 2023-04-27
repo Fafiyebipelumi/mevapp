@@ -63,20 +63,21 @@ const Campaigns = () => {
                     <h1>Campaigns</h1>
                     { <CreateCampaignButton />}
                 </div> */}
-                <div className='campaign-wrapper'>
+                {/* <div className='campaign-wrapper'> */}
                     <div className='campaign-options'>
-                        <p><img src={RecentIcon} alt='' width='16px' height='14px' />Recent</p>
+                        <h2>Hello, Matthew</h2>
+                        {/* <p><img src={RecentIcon} alt='' width='16px' height='14px' />Recent</p>
                         <p><img src={FinishedIcon} alt='' width='20.6px' height='10.62px' />Finished</p>
                         <p><img src={ArchivedIcon} alt='' width='17px' height='14px' />Archived</p>
-                        <p><img src={FilterIcon} alt='' width='15px' height='7px' />Filter</p>
+                        <p><img src={FilterIcon} alt='' width='15px' height='7px' />Filter</p> */}
+                        <div className='campaign-search'>
+                            <FaSearch style={{ marginLeft: '30px', color: '#ccc' }} /><input type='text' value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Search Campaigns' />
+                        </div>
                     </div>
-                    <div className='campaign-search'>
-                        <FaSearch style={{ marginLeft: '30px', color: '#ccc' }} /><input type='text' value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Search Campaigns' />
-                    </div>
-                </div>
+                {/* </div> */}
             </div>
-            <div className='campaign-table'>
-                {isLoading && <div className='loading-tables'><img src={Loading} alt='' /> <p>Loading Tables</p></div>}
+            <div className='campaign-table' style={{marginTop: 20}}>
+                {isLoading && <div className='loading-tables'><img src={Loading} alt='' /> <p>Loading Campaigns</p></div>}
                 {error && <div className='error'><img src={Sorry} /> {error} <p>Check your internet connection</p></div>}
                 {campaigns && <Table campaigns={campaigns} isLoading={isLoading} />}
             </div>

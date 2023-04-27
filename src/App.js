@@ -6,7 +6,8 @@ import MessagingOption from './components/MessagingOption';
 import Campaign from './pages/Campaign';
 import Upload from './pages/Upload';
 import CampaignDetails from './components/CampaignDetails';
-import CreateOptions from './components/CreateOptions';
+// import CreateOptions from './components/CreateOptions';
+import Create from './components/Create';
 // import RichText from './components/RichText';
 // import HtmlText from './components/HtmlText';
 // import CreateSidebar from './components/CreateSidebar';
@@ -30,8 +31,8 @@ function App() {
         <Route exact path='/' element={<MessagingOption />} />
         <Route path='/welcome' element={<EmailWelcome />} />
         <Route path='/campaign' element={<Campaign />} />
-        <Route path='/campaign/:uuid' element={<CampaignDetails />} />
-        <Route path='/create/:uuid' element={<CreateOptions />} />
+        <Route path='/campaign/:uuid' element={<CampaignDetails />} /> 
+        <Route path='/create/:uuid' element={<Create />} />
         <Route path='/upload' element={<Upload />} />
         {/* <Route path='/content/:uuid/rich-text' element={<RichText />} />
         <Route path='/content/:uuid/html-text' element={<HtmlText />} /> */}

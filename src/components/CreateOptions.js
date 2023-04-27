@@ -8,11 +8,12 @@ import { baseURL } from '../interceptor/axios';
 import RichTextImage from '../assets/text.png';
 import SelectDropdown from './SelectDropdown';
 import { TailSpin } from 'react-loader-spinner';
-import { AiOutlineArrowLeft } from 'react-icons/ai'; 
+import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { FaBars } from 'react-icons/fa';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 // import 'sweetalert2/src/sweetalert2.scss'
+import HTML from '../assets/html-logo.png'
 import axios from 'axios';
 // import DesignContent from './DesignContent';
 import RichText from './RichText';
@@ -38,6 +39,9 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
     const [csv, setCsv] = useState(null);
     const [showRichText, setShowRichText] = useState(false);
     const [showHtmlText, setShowHtmlText] = useState(false);
+
+    const [audience, setAudience] = useState(true)
+    const [campaigns, setCampaigns] = useState(false)
 
     const showDropdown = () => setDropdown(!dropdown);
     const showEmailDropdown = () => setEmailDropdown(!emailDropdown);
@@ -129,9 +133,9 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
             <div className='create'>
                 <div className='create-container'>
                     <FaBars onClick={showSidebar} style={{ color: '#57BF7E', marginLeft: '30px', fontSize: '25px', cursor: 'pointer' }} />
-                    <div className='create-close-icon'>
+                    {/* <div className='create-close-icon'>
                         <div>{sidebar ? <Link to='/campaign'><AiOutlineArrowLeft style={{ fontSize: '18px', color: '#424242', cursor: 'pointer', marginLeft: '30px' }} onClick={showSidebar} /></Link> : null}</div>
-                    </div>
+                    </div> */}
                     <div className='create-buttons'>
                         <button>Schedule</button>
                         <button>Finish Later</button>
@@ -142,32 +146,33 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
             </div>
             <div className='create-option'>
                 <div className={sidebar ? 'create-menu active' : 'create-menu'}>
-                    <CreateSidebar showSidebar={showSidebar} />
+                    <CreateSidebar setAudience={setAudience} setCampaigns={setCampaigns} />
                 </div>
                 <div className='create-option-container'>
-                    <div className={sidebar ? 'create-option-edit' : 'create-option-editing'}>
+                    {/* <div className={sidebar ? 'create-option-edit' : 'create-option-editing'}>
                         <h2>Untitled</h2>
                         <p>Edit name</p>
-                    </div>
+                    </div> */}
                     <div className={sidebar ? 'create-option-wrap' : 'create-option-wrapper'}>
-                        <div className='create-option-group'>
-                            <h6>1</h6>
-                            <div className='create-option-items'>
-                                <div className='create-option-item'>
-                                    <div className='create-option-heading'>
-                                        <h5>To</h5>
-                                        <h5>Who are you sending this campaign?</h5>
-                                    </div>
-                                    <div className={sidebar ? 'create-option-button' : 'create-option-button-active'}>
-                                        {dropdown ? <button onClick={showDropdown}>Add Recipient</button> : null}
-                                    </div>
-                                </div>
-                                <div className={dropdown ? 'create-option-clear' : 'create-option-select'}>
-                                    <div className={sidebar ? 'create-select-width' : 'create-select-width-active'}>
-                                        <div className='create-select-dropdown'>
-                                            <SelectDropdown loading={loading} showDropdown={showDropdown} setRecipients={setRecipients} handleSubmit={handleSubmit} setCsv={setCsv} />
+                        {audience && (
+                            <div className='create-option-group'>
+                                <h6>1</h6>
+                                <div className='create-option-items'>
+                                    <div className='create-option-item'>
+                                        <div className='create-option-heading'>
+                                            <h5>To</h5>
+                                            <h5>Who are you sending this campaign?</h5>
                                         </div>
-                                        {/* <ToastContainer 
+                                        <div className={sidebar ? 'create-option-button' : 'create-option-button-active'}>
+                                            {dropdown ? <button onClick={showDropdown}>Add Recipient</button> : null}
+                                        </div>
+                                    </div>
+                                    <div className={dropdown ? 'create-option-clear' : 'create-option-select'}>
+                                        <div className={sidebar ? 'create-select-width' : 'create-select-width-active'}>
+                                            <div className='create-select-dropdown'>
+                                                <SelectDropdown loading={loading} showDropdown={showDropdown} setRecipients={setRecipients} handleSubmit={handleSubmit} setCsv={setCsv} />
+                                            </div>
+                                            {/* <ToastContainer 
                                         position="top-right"
                                         autoClose={3000}
                                         hideProgressBar
@@ -178,7 +183,7 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                                         draggable
                                         pauseOnHover
                                     /> */}
-                                        {/* <div className='select-option' onClick={showTableEmail}>
+                                            {/* <div className='select-option' onClick={showTableEmail}>
                                         <span onClick={showTableEmail}>Choose an option</span>
                                         {<AiFillCaretDown style={{ cursor: 'pointer', fontSize: 20, color: '#aaa' }} onClick={showTableEmail} />}
                                     </div>
@@ -193,125 +198,129 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                                                 <h3 className={mevTable ? 'upload-email-none' : ''}>Upload email in CSV files</h3>
                                         </div>
                                     </div> */}
-                                    </div>
-                                    {/* <div className='create-option-buttons'>
+                                        </div>
+                                        {/* <div className='create-option-buttons'>
                                     <button>Save</button>
                                     <button onClick={showDropdown}>Cancel</button>
                                 </div> */}
+                                    </div>
                                 </div>
+                                {/* <PopUp trigger={buttonPopup} setTrigger={setButtonPopup}></PopUp> */}
                             </div>
-                            {/* <PopUp trigger={buttonPopup} setTrigger={setButtonPopup}></PopUp> */}
-                        </div>
-                        <div className='create-option-group'>
-                            <h6>2</h6>
-                            <div className='create-option-items'>
-                                <div className='create-option-item'>
-                                    <div className='create-option-heading'>
-                                        <h5>From</h5>
-                                        <h5>Who is sending this campaign?</h5>
-                                    </div>
-                                    <div className={sidebar ? 'email-create-option-button' : 'email-create-option-button-active'}>
-                                        {emailDropdown ? <button onClick={showEmailDropdown}>Add From</button> : null}
+                        )
+                        }
+                        {campaigns && (
+                            <>
+                                <div className='create-option-group'>
+                                    <h6>2</h6>
+                                    <div className='create-option-items'>
+                                        <div className='create-option-item'>
+                                            <div className='create-option-heading'>
+                                                <h5>From</h5>
+                                                <h5>Who is sending this campaign?</h5>
+                                            </div>
+                                            <div className={sidebar ? 'email-create-option-button' : 'email-create-option-button-active'}>
+                                                {emailDropdown ? <button onClick={showEmailDropdown}>Add From</button> : null}
+                                            </div>
+                                        </div>
+                                        <div className={emailDropdown ? 'email-create-option-clear' : 'email-create-option-select'}>
+                                            <div className={sidebar ? 'create-input' : 'create-inputs'}>
+                                                <form onSubmit={handleSubmit}>
+                                                    <div className='sender-form'>
+                                                        <input
+                                                            required
+                                                            type='text'
+                                                            placeholder='Enter your name here'
+                                                            value={senderName}
+                                                            onChange={(e) => setSenderName(e.target.value)}
+                                                        />
+                                                        <div className='email-container'>
+                                                            <input
+                                                                required
+                                                                type='email'
+                                                                placeholder='Enter your email address here'
+                                                                value={senderEmail}
+                                                                onChange={handleValidateEmail}
+                                                            // onChange={(e) => setSenderEmail(e.target.value)}
+                                                            />
+                                                            <span className='email-validate'>{invalidEmail}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div className='email-create-option-buttons'>
+                                                        <button type='submit'>{!loading ? 'Save' : <TailSpin height='25' width='25' color='#3A915B' radius='3' visible={true} />}</button>
+                                                        <span onClick={showEmailDropdown}>Cancel</span>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className={emailDropdown ? 'email-create-option-clear' : 'email-create-option-select'}>
-                                    <div className={sidebar ? 'create-input' : 'create-inputs'}>
-                                        <form onSubmit={handleSubmit}>
-                                            <div className='sender-form'>
-                                                <input
-                                                    required
-                                                    type='text'
-                                                    placeholder='Enter your name here'
-                                                    value={senderName}
-                                                    onChange={(e) => setSenderName(e.target.value)}
-                                                />
-                                                <div className='email-container'>
+                                <div className='create-option-group'>
+                                    <h6>3</h6>
+                                    <div className='create-option-items'>
+                                        <div className='create-option-item'>
+                                            <div className='create-option-heading'>
+                                                <h5>Subject</h5>
+                                                <h5>What is the subject of this campaign?</h5>
+                                            </div>
+                                            <div className={sidebar ? 'subject-create-option-button' : 'subject-create-option-button-active'}>
+                                                {subjectDropdown ? <button onClick={showSubjectDropdown}>Add Subject</button> : null}
+                                            </div>
+                                        </div>
+                                        <div className={subjectDropdown ? 'email-create-option-clear' : 'email-create-option-select'}>
+                                            <div className={sidebar ? 'create-input' : 'create-inputs'}>
+                                                <form onSubmit={handleSubmit}>
                                                     <input
                                                         required
-                                                        type='email'
-                                                        placeholder='Enter your email address here'
-                                                        value={senderEmail}
-                                                        onChange={handleValidateEmail}
-                                                    // onChange={(e) => setSenderEmail(e.target.value)}
+                                                        type='text'
+                                                        placeholder='Subject'
+                                                        value={subject}
+                                                        onChange={(e) => setSubject(e.target.value)}
                                                     />
-                                                    <span className='email-validate'>{invalidEmail}</span>
+                                                    <input
+                                                        type='email'
+                                                        placeholder='Preview Text'
+                                                    />
+                                                    <div className='email-create-option-buttons'>
+                                                        <button type='submit'>{!loading ? 'Save' : <TailSpin height='25' width='25' color='#3A915B' radius='3' visible={true} />}</button>
+                                                        <span onClick={showSubjectDropdown}>Cancel</span>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className='create-option-content'>
+                                    <h6>4</h6>
+                                    <div className='create-option-items'>
+                                        <div className='create-option-item'>
+                                            <div className='create-option-heading'>
+                                                <h5>Content</h5>
+                                                <h5>Design the content for your mail</h5>
+                                            </div>
+                                            <div className={sidebar ? 'design-create-option-button' : 'design-create-option-button-active'}>
+                                                {designDropdown ? <button onClick={showDesignDropdown}>Design Email</button> : null}
+                                            </div>
+                                        </div>
+                                        <div className={designDropdown ? 'email-create-option-clear' : 'email-create-option-select'}>
+                                            <div className={sidebar ? 'create-display' : 'create_display'}>
+                                                <div className='template'>
+                                                    <h3>Rich Text Editor</h3>
+                                                    <img src={RichTextImage} alt='' />
+                                                    <button onClick={(e) => setShowRichText(!showRichText)}>Select</button>
+                                                </div>
+                                                <div className='template'>
+                                                    <h3>HTML Template</h3>
+                                                    <img src={HTML} alt='' width={80} height={50} />
+                                                    <button disabled onClick={(e) => setShowHtmlText(!showHtmlText)}>Select</button>
                                                 </div>
                                             </div>
-                                            <div className='email-create-option-buttons'>
-                                                <button type='submit'>{!loading ? 'Save' : <TailSpin height='25' width='25' color='#3A915B' radius='3' visible={true} />}</button>
-                                                <span onClick={showEmailDropdown}>Cancel</span>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='create-option-group'>
-                            <h6>3</h6>
-                            <div className='create-option-items'>
-                                <div className='create-option-item'>
-                                    <div className='create-option-heading'>
-                                        <h5>Subject</h5>
-                                        <h5>What is the subject of this campaign?</h5>
-                                    </div>
-                                    <div className={sidebar ? 'subject-create-option-button' : 'subject-create-option-button-active'}>
-                                        {subjectDropdown ? <button onClick={showSubjectDropdown}>Add Subject</button> : null}
-                                    </div>
-                                </div>
-                                <div className={subjectDropdown ? 'email-create-option-clear' : 'email-create-option-select'}>
-                                    <div className={sidebar ? 'create-input' : 'create-inputs'}>
-                                        <form onSubmit={handleSubmit}>
-                                            <input
-                                                required
-                                                type='text'
-                                                placeholder='Subject'
-                                                value={subject}
-                                                onChange={(e) => setSubject(e.target.value)}
-                                            />
-                                            <input
-                                                type='email'
-                                                placeholder='Preview Text'
-                                            />
-                                            <div className='email-create-option-buttons'>
-                                                <button type='submit'>{!loading ? 'Save' : <TailSpin height='25' width='25' color='#3A915B' radius='3' visible={true} />}</button>
-                                                <span onClick={showSubjectDropdown}>Cancel</span>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='create-option-content'>
-                            <h6>4</h6>
-                            <div className='create-option-items'>
-                                <div className='create-option-item'>
-                                    <div className='create-option-heading'>
-                                        <h5>Content</h5>
-                                        <h5>Design the content for your mail</h5>
-                                    </div>
-                                    <div className={sidebar ? 'design-create-option-button' : 'design-create-option-button-active'}>
-                                        {designDropdown ? <button onClick={showDesignDropdown}>Design Email</button> : null}
-                                    </div>
-                                </div>
-                                <div className={designDropdown ? 'email-create-option-clear' : 'email-create-option-select'}>
-                                    <div className={sidebar ? 'create-display' : 'create_display'}>
-                                        <div className='template'>
-                                            <h3>Rich Text Editor</h3>
-                                            <img src={RichTextImage} alt='' />
-                                            <button onClick={(e) => setShowRichText(!showRichText)}>Select</button>
-                                        </div>
-                                        <div className='template'>
-                                            <h3>HTML Template</h3>
-                                            <img src='' alt='' />
-                                            <button disabled onClick={(e) => setShowHtmlText(!showHtmlText)}>Select</button>
-                                        </div>
-                                    </div>
-                                    {showRichText && (
-                                        <div>
-                                            {/* <div className='text-wrapper'>
+                                            {showRichText && (
+                                                <div>
+                                                    {/* <div className='text-wrapper'>
                                             <h2>Write and format your text below</h2>
                                         </div> */}
-                                            {/* <div className='text-editor'>
+                                                    {/* <div className='text-editor'>
                                             <CKEditor
                                                 editor={ClassicEditor}
                                                 data={message}
@@ -322,25 +331,27 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                                                 <span onClick={showDesignDropdown}>Cancel</span>
                                             </div>
                                         </div> */}
-                                            <RichText message={message} setMessage={setMessage} />
-                                            <div className='email-create-option-buttons'>
-                                                <button onClick={handleSubmit}>Save</button>
-                                                <span onClick={showDesignDropdown}>Cancel</span>
-                                            </div>
+                                                    <RichText message={message} setMessage={setMessage} />
+                                                    <div className='email-create-option-buttons'>
+                                                        <button onClick={handleSubmit}>Save</button>
+                                                        <span onClick={showDesignDropdown}>Cancel</span>
+                                                    </div>
+                                                </div>
+                                            )}
+                                            {showHtmlText && (
+                                                <div>
+                                                    <HtmlText message={message} setMessage={setMessage} />
+                                                    <div className='email-create-option-buttons'>
+                                                        <button onClick={handleSubmit}>{!loading ? 'Save' : <TailSpin height='25' width='25' color='#3A915B' radius='3' visible={true} />}</button>
+                                                        <span>Cancel</span>
+                                                    </div>
+                                                </div>
+                                            )}
                                         </div>
-                                    )}
-                                    {showHtmlText && (
-                                        <div>
-                                            <HtmlText message={message} setMessage={setMessage} />
-                                            <div className='email-create-option-buttons'>
-                                                <button onClick={handleSubmit}>{!loading ? 'Save' : <TailSpin height='25' width='25' color='#3A915B' radius='3' visible={true} />}</button>
-                                                <span>Cancel</span>
-                                            </div>
-                                        </div>
-                                    )}
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                            </>
+                        )}
                     </div>
                 </div>
                 <ToastContainer

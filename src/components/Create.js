@@ -64,7 +64,7 @@ const Create = () => {
 
     return (
         <div className='create'>
-            <div className='create-container'>
+            {/* <div className='create-container'>
                 <FaBars onClick={showSidebar} style={{ color: '#57BF7E', marginLeft: '30px', fontSize: '25px', cursor: 'pointer' }} />
                 <div className='create-close-icon'>
                     <div>{sidebar ? <Link to='/campaign'><AiOutlineArrowLeft style={{ fontSize: '18px', color: '#424242', cursor: 'pointer', marginLeft: '30px' }} onClick={showSidebar} /></Link> : null}</div>
@@ -75,7 +75,8 @@ const Create = () => {
                     <button>Send</button>
                     <div className='create-avatar'>img</div>
                 </div>
-            </div>
+            </div>  */}
+            <CreateOptions showSidebar={showSidebar} sidebar={sidebar} />
         </div>
     )
 }

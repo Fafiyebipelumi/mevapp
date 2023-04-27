@@ -35,15 +35,24 @@
 .campaign-wrapper {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     margin-top: 20px;
     margin-bottom: 25px;
+    /* width: 400px; */
 }
 
 .campaign-options {
+    width: 70%;
     display: flex;
     align-items: center;
-    margin-top: -20px;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.campaign-options h2 {
+    color: #57BF7E;
+    font-size: 20px;
+    font-weight: bolder;
 }
 
 .campaign-options p {
@@ -66,8 +75,9 @@
     display: flex;
     align-items: center;
     border-radius: 60.0913px;
-    margin-left: 30px;
-    margin-top: -20px;
+    justify-content: center;
+    /* margin-left: 30px; */
+    /* margin-top: 20px; */
 }
 
 
