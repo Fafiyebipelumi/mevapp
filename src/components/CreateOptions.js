@@ -37,6 +37,8 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
     const [subject, setSubject] = useState('');
     const [message, setMessage] = useState('');
     const [csv, setCsv] = useState(null);
+    const [richText, setRichText] = useState(true)
+    const [htmlText, setHtmlText] = useState(true)
     const [showRichText, setShowRichText] = useState(false);
     const [showHtmlText, setShowHtmlText] = useState(false);
 
@@ -47,6 +49,25 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
     const showEmailDropdown = () => setEmailDropdown(!emailDropdown);
     const showSubjectDropdown = () => setSubjectDropdown(!subjectDropdown);
     const showDesignDropdown = () => setDesignDropdown(!designDropdown);
+
+    const selectRichText = () => {
+        setShowRichText(true)
+        setHtmlText(false)
+    }
+    const selectHtmlText = () => {
+        setShowHtmlText(true)
+        setRichText(false)
+    }
+
+    const cancelRichText = () => {
+        setShowRichText(false)
+        setHtmlText(true)
+    }
+
+    const cancelHtmlText = () => {
+        setShowHtmlText(false)
+        setRichText(true)
+    }
 
     const navigate = useNavigate()
 
@@ -146,7 +167,7 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
             </div>
             <div className='create-option'>
                 <div className={sidebar ? 'create-menu active' : 'create-menu'}>
-                    <CreateSidebar setAudience={setAudience} setCampaigns={setCampaigns} />
+                    <CreateSidebar audience={audience} campaigns={campaigns} setAudience={setAudience} setCampaigns={setCampaigns} />
                 </div>
                 <div className='create-option-container'>
                     {/* <div className={sidebar ? 'create-option-edit' : 'create-option-editing'}>
@@ -304,46 +325,37 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                                         </div>
                                         <div className={designDropdown ? 'email-create-option-clear' : 'email-create-option-select'}>
                                             <div className={sidebar ? 'create-display' : 'create_display'}>
-                                                <div className='template'>
-                                                    <h3>Rich Text Editor</h3>
-                                                    <img src={RichTextImage} alt='' />
-                                                    <button onClick={(e) => setShowRichText(!showRichText)}>Select</button>
-                                                </div>
-                                                <div className='template'>
-                                                    <h3>HTML Template</h3>
-                                                    <img src={HTML} alt='' width={80} height={50} />
-                                                    <button disabled onClick={(e) => setShowHtmlText(!showHtmlText)}>Select</button>
-                                                </div>
+                                                {richText && (
+                                                    <div className='template'>
+                                                        <h3>Rich Text Editor</h3>
+                                                        <img src={RichTextImage} alt='' />
+                                                        <button onClick={selectRichText}>Select</button>
+                                                    </div>
+                                                )}
+                                                {htmlText && (
+                                                    <div className='template'>
+                                                        <h3>HTML Template</h3>
+                                                        <img src={HTML} alt='' width={80} height={50} />
+                                                        <button onClick={selectHtmlText}>Select</button>
+                                                    </div>
+                                                )}
                                             </div>
                                             {showRichText && (
                                                 <div>
-                                                    {/* <div className='text-wrapper'>
-                                            <h2>Write and format your text below</h2>
-                                        </div> */}
-                                                    {/* <div className='text-editor'>
-                                            <CKEditor
-                                                editor={ClassicEditor}
-                                                data={message}
-                                                onChange={handleChange}
-                                                />
-                                                <div className='email-create-option-buttons'>
-                                                <button onClick={handleSubmit}>Save</button>
-                                                <span onClick={showDesignDropdown}>Cancel</span>
-                                            </div>
-                                        </div> */}
                                                     <RichText message={message} setMessage={setMessage} />
                                                     <div className='email-create-option-buttons'>
                                                         <button onClick={handleSubmit}>Save</button>
-                                                        <span onClick={showDesignDropdown}>Cancel</span>
+                                                        <span onClick={cancelRichText}>Cancel</span>
                                                     </div>
                                                 </div>
                                             )}
                                             {showHtmlText && (
                                                 <div>
+                                                    {/*  */}
                                                     <HtmlText message={message} setMessage={setMessage} />
                                                     <div className='email-create-option-buttons'>
                                                         <button onClick={handleSubmit}>{!loading ? 'Save' : <TailSpin height='25' width='25' color='#3A915B' radius='3' visible={true} />}</button>
-                                                        <span>Cancel</span>
+                                                        <span onClick={cancelHtmlText}>Cancel</span>
                                                     </div>
                                                 </div>
                                             )}
@@ -351,7 +363,8 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                                     </div>
                                 </div>
                             </>
-                        )}
+                        )
+                        }
                     </div>
                 </div>
                 <ToastContainer

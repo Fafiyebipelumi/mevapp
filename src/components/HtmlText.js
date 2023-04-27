@@ -19,7 +19,7 @@ const HtmlText = ({ message, setMessage }) => {
     return (
         <div className='text-container'>
             <div data-color-mode='light' className='text-editor'>
-                <h2>Write or paste your Email HTML code here</h2>
+                <h2>Paste your HTML code here</h2>
                 <CodeEditor
                     value={message}
                     ref={textRef}

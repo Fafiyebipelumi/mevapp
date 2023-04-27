@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import SettingIcon from '../assets/settings.png'
 import MEV from '../assets/Mevlogo.png'
 
-const CreateSidebar = ({ setAudience, setCampaigns }) => {
+const CreateSidebar = ({ audience, campaigns, setAudience, setCampaigns }) => {
     const handleAudience = () => {
         setAudience(true)
         setCampaigns(false)
@@ -28,8 +28,8 @@ const CreateSidebar = ({ setAudience, setCampaigns }) => {
                     <span><IoMdCreate style={{ color: '#fff', fontSize: '25px' }} /></span><p>Create</p>
                 </div>
                 <ul className='create-sidebar-links'>
-                    <li onChange={handleAudience}><FaUsers style={{ color: '#57BF7E', marginRight: '10px', fontSize: '20px' }} />Audience</li>
-                    <li onClick={handleCampaign}><SiCampaignmonitor style={{ color: '#57BF7E', marginRight: '10px', fontSize: '20px' }} />Campaign</li>
+                    <li onClick={handleAudience} className={audience === true ? 'active-sidebar' : ''}><FaUsers style={{ color: '#57BF7E', marginRight: '10px', fontSize: '20px' }} />Audience</li>
+                    <li onClick={handleCampaign} className={campaigns === true ? 'active-sidebar' : ''}><SiCampaignmonitor style={{ color: '#57BF7E', marginRight: '10px', fontSize: '20px' }} />Campaign</li>
                     <li><img src={SettingIcon} alt='Settings' />Settings</li>
                 </ul>
             </div>
