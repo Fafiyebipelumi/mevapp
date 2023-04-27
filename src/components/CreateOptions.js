@@ -115,15 +115,15 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
     }
 
 
-    const handleValidateEmail = (e) => {
-        const email = e.target.value
-        setSenderEmail(email)
-        if (validator.isEmail(email)) {
-            setInvalidEmail('')
-        } else {
-            setTimeout(() => setInvalidEmail('Invalid Email'), 3000)
-        }
-    }
+    // const handleValidateEmail = (e) => {
+    //     const email = e.target.value
+    //     setSenderEmail(email)
+    //     if (validator.isEmail(email)) {
+    //         setInvalidEmail('')
+    //     } else {
+    //         setTimeout(() => setInvalidEmail('Invalid Email'), 3000)
+    //     }
+    // }
 
     const handleSendCampaign = async () => {
 
@@ -262,7 +262,7 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                                                                 type='email'
                                                                 placeholder='Enter your email address here'
                                                                 value={senderEmail}
-                                                                onChange={handleValidateEmail}
+                                                                onChange={(e) => setSenderEmail(e.target.value)}
                                                             // onChange={(e) => setSenderEmail(e.target.value)}
                                                             />
                                                             <span className='email-validate'>{invalidEmail}</span>
