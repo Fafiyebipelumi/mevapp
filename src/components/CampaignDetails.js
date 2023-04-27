@@ -7,6 +7,7 @@ import Details from './Details';
 import { HiOutlineArrowNarrowLeft } from 'react-icons/hi';
 import { baseURL } from '../interceptor/axios';
 import Sorry from '../assets/sorry.png';
+import MEV from '../assets/Mevlogo.png';
 import Loading from '../assets/Loaders/loading_big.gif';
 import DetailSidebar from './DetailSidebar';
 
@@ -55,12 +56,13 @@ const CampaignDetails = () => {
         <div className='new-detail'>
             <div className='new-container'>
                 <div className='new'>
-                    <Link to='#' className='menu-bars'>
-                        <FaBars style={{ marginLeft: '3rem', color: '#fff', fontSize: '25px' }} />
+                    <Link to='/campaign' className='menu-bars' style={{marginLeft: 30}}>
+                        {/* <FaBars style={{ marginLeft: '3rem', color: '#fff', fontSize: '25px' }} /> */}
+                        <img src={MEV} alt='' width={40} height={40} />
                     </Link>
-                    <HiOutlineArrowNarrowLeft style={{ cursor: 'pointer', color: '#fff' }} />
+                    {/* <HiOutlineArrowNarrowLeft style={{ cursor: 'pointer', color: '#fff' }} /> */}
                     <div className='new-search'>
-                        <FaSearch style={{ marginLeft: '30px', color: '#ccc' }} /><input type='text' value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Search Campaigns' />
+                        {/* <FaSearch style={{ marginLeft: '30px', color: '#ccc' }} /><input type='text' value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Search Campaigns' /> */}
                     </div>
                     <div className='avatar'></div>
                 </div>

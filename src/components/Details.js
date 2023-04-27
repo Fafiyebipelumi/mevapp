@@ -34,12 +34,12 @@ const Details = ({ detail, sidebar }) => {
                             <p>{detail.createdAt}</p>
                         </div>
                     </div>
-                    <div className='detail-icons'>
+                    {/* <div className='detail-icons'>
                         <img src={MenuIcon} alt='Menu-Icon' />
                         <img src={PrintIcon} alt='Print-Icon' />
                         <img src={UndoIcon} alt='Undo-Icon' />
                         <img src={StarIcon} alt='Star-Icon' />
-                    </div>
+                    </div> */}
                 </div>
             </div>
             <div>
