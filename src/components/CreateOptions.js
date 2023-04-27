@@ -22,6 +22,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import HtmlText from './HtmlText';
 import validator from 'validator';
 import Create from './Create';
+import ImportFromZoho from './ImportFromZoho';
 // , recipients, setRecipients, senderName, setSenderName, senderEmail, setSenderEmail, subject, setSubject, message, setMessage, csv, setCsv 
 const CreateOptions = ({ sidebar, showSidebar }) => {
     const [invalidEmail, setInvalidEmail] = useState('')
@@ -351,7 +352,7 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                                             )}
                                             {showHtmlText && (
                                                 <div>
-                                                    {/*  */}
+                                                    <ImportFromZoho />
                                                     <HtmlText message={message} setMessage={setMessage} />
                                                     <div className='email-create-option-buttons'>
                                                         <button onClick={handleSubmit}>{!loading ? 'Save' : <TailSpin height='25' width='25' color='#3A915B' radius='3' visible={true} />}</button>
