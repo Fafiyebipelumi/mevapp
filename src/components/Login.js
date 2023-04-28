@@ -5,6 +5,7 @@ import { baseURL } from "../interceptor/axios";
 import axios from "axios";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { SiZoho } from "react-icons/si";
 
 const Login = () => {
 
@@ -30,41 +31,46 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if(!username || !password) {
+            toast.warning('Input all fields!');
+        } else {
             setBtnLoading('Loading...')
             await axios(getAuth)
-                .then((response) => {
-                    console.log(response.data.messsage);
-                    if (response.data.messsage === 'SUCCESS') {
-                        toast.success('Login Successful')
-                        const token = response.data.access_token
-                        const email = response.data.email
-                        const name = response.data.name
-                        localStorage.setItem('token', token)
-                        localStorage.setItem('email', email)
-                        localStorage.setItem('name', name)
-                        navigate('/options')
-                        setBtnLoading('Login')
-                    } else {
-                        toast.error(response.data.description)
-                        setBtnLoading('Login')
-                    }
-                })
-            // console.error(error);
-            // if (!error?.response) {
-            //     // setErrorMsg('No Server Response');
-            //     toast.error('No Server Response')
-            // } else if (error.response?.status === 400) {
-            //     // setErrorMsg('Missing Username or Password');
-            //     toast.error('Missing Username or Password')
-            // } else if (error.response?.data?.msg === 'FAILED') {
-            //     // setErrorMsg('Password or email address entered is incorrect.');
-            //     toast.error(error.response?.description)
-            // } else {
-            //     // setErrorMsg('Login Failed');
-            //     toast.error('Login Failed')
-            // }
-            // // errRef.current.focus();
-            // setBtnLoading('Login')
+            .then((response) => {
+                console.log(response.data.messsage);
+                if (response.data.messsage === 'SUCCESS') {
+                    toast.success('Login Successful')
+                    const token = response.data.access_token
+                    const email = response.data.email
+                    const name = response.data.name
+                    localStorage.setItem('token', token)
+                    localStorage.setItem('email', email)
+                    localStorage.setItem('name', name)
+                    navigate('/options')
+                    setBtnLoading('Login')
+                } else {
+                    toast.error(response.data.description)
+                    setBtnLoading('Login')
+                }
+            })
+        
+        }
+        // console.error(error);
+        // if (!error?.response) {
+        //     // setErrorMsg('No Server Response');
+        //     toast.error('No Server Response')
+        // } else if (error.response?.status === 400) {
+        //     // setErrorMsg('Missing Username or Password');
+        //     toast.error('Missing Username or Password')
+        // } else if (error.response?.data?.msg === 'FAILED') {
+        //     // setErrorMsg('Password or email address entered is incorrect.');
+        //     toast.error(error.response?.description)
+        // } else {
+        //     // setErrorMsg('Login Failed');
+        //     toast.error('Login Failed')
+        // }
+        // // errRef.current.focus();
+        // setBtnLoading('Login')
     }
 
     return (
@@ -104,6 +110,12 @@ const Login = () => {
                     <button type='submit'>{btnLoading}</button>
                     {/* <p className="message">Not registered? <a href="#">Create an account</a></p> */}
                 </form>
+                <div className='login-option'>
+                    <span>Or Login With</span>
+                    <div className='with-zoho'>
+                        <span>Zoho</span>
+                    </div>
+                </div>
             </div>
         </div>
     )
