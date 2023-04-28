@@ -68,6 +68,30 @@
     cursor: pointer;
 }
 
+.preview {
+    width: 700px;
+    /* background: #000; */
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.preview-btn {
+    background: #DDF2E5;
+    margin-top: 50px;
+    border-radius: 10px;
+    padding: 10px 15px;
+    border: none;
+    color: #3A915B;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+}
+
 /* .text-container {
     background-color: #fff;
     display: flex;

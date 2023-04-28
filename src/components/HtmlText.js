@@ -6,7 +6,7 @@ const HtmlText = ({ message, setMessage }) => {
 
     const textRef = useRef();
 
-    const [code, setCode] = useState('')
+    const [preview, setPreview] = useState(false);
 
     useEffect(() => {
         if (textRef.current) {
@@ -31,7 +31,13 @@ const HtmlText = ({ message, setMessage }) => {
                         fontFamily: 'Montserrat', fontSize: 18, fontWeight: 600
                     }}
                 />
+                <button onClick={() => setPreview(!preview)} className='preview-btn'>
+                    {preview ? 'Edit' : 'Preview'}
+                </button>
             </div>
+                {preview ? (
+                    <div dangerouslySetInnerHTML={{__html: message}} className='preview' />
+                ) : null}
         </div>
     )
 }
