@@ -30,7 +30,6 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
             setBtnLoading('Loading...')
             await axios(getAuth)
                 .then((response) => {
@@ -44,27 +43,28 @@ const Login = () => {
                         localStorage.setItem('email', email)
                         localStorage.setItem('name', name)
                         navigate('/options')
+                        setBtnLoading('Login')
+                    } else {
+                        toast.error(response.data.description)
+                        setBtnLoading('Login')
                     }
-                    setBtnLoading('Login')
                 })
-        } catch (error) {
-            console.error(error);
-            if (!error?.response) {
-                // setErrorMsg('No Server Response');
-                toast.error('No Server Response')
-            } else if (error.response?.status === 400) {
-                // setErrorMsg('Missing Username or Password');
-                toast.error('Missing Username or Password')
-            } else if (error.response?.data?.msg === 'FAILED') {
-                // setErrorMsg('Password or email address entered is incorrect.');
-                toast.error(error.response?.description)
-            } else {
-                // setErrorMsg('Login Failed');
-                toast.error('Login Failed')
-            }
-            // errRef.current.focus();
-            setBtnLoading('Login')
-        }
+            // console.error(error);
+            // if (!error?.response) {
+            //     // setErrorMsg('No Server Response');
+            //     toast.error('No Server Response')
+            // } else if (error.response?.status === 400) {
+            //     // setErrorMsg('Missing Username or Password');
+            //     toast.error('Missing Username or Password')
+            // } else if (error.response?.data?.msg === 'FAILED') {
+            //     // setErrorMsg('Password or email address entered is incorrect.');
+            //     toast.error(error.response?.description)
+            // } else {
+            //     // setErrorMsg('Login Failed');
+            //     toast.error('Login Failed')
+            // }
+            // // errRef.current.focus();
+            // setBtnLoading('Login')
     }
 
     return (
