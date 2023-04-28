@@ -45,7 +45,7 @@
     margin-right: 80px;
 }
 
-.create-buttons button {
+/* .create-buttons button {
     border: none;
     padding: 15px 20px;
     cursor: pointer;
@@ -70,9 +70,9 @@
     font-family: 'Montserrat';
     font-size: 18px;
     color: #fff;
-}
+} */
 
-.create-buttons button:nth-child(3) {
+/* .create-buttons button:nth-child(3) {
     background: #57BF7E;
     border-radius: 10px;
     font-style: normal;
@@ -80,9 +80,9 @@
     font-family: 'Montserrat';
     font-size: 18px;
     color: #fff;
-}
+} */
 
-.create-avatar {
+/* .create-avatar {
     width: 55px;
     height: 55px;
     border-radius: 27.5px;
@@ -92,7 +92,7 @@
     justify-content: center;
     cursor: pointer;
     margin-left: 25px;
-}
+} */
 
 .create-menu.active {
     left: 0;

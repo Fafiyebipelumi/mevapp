@@ -49,8 +49,7 @@
 
 .create-buttons button {
     border: none;
-    padding: 15px 20px;
-    cursor: pointer;
+    padding: 15px 25px;
     margin: 10px;
 }
 
@@ -60,6 +59,7 @@
     color: #3A915B;
     font-family: 'Montserrat';
     font-style: normal;
+    cursor: pointer;
     font-weight: 600;
     font-size: 18px;
 }
@@ -69,12 +69,13 @@
     border-radius: 10px;
     font-style: normal;
     font-weight: 600;
+    cursor: pointer;
     font-family: 'Montserrat';
     font-size: 18px;
     color: #fff;
 }
 
-.create-buttons button:nth-child(3) {
+.able-btn {
     background: #57BF7E;
     border-radius: 10px;
     font-style: normal;
@@ -82,6 +83,21 @@
     font-family: 'Montserrat';
     font-size: 18px;
     color: #fff;
+}
+
+.disabled-btn {
+    background: #909ABF;
+    box-shadow: 0px 8px 16px rgba(9, 26, 54, 0.15);
+    border-radius: 5px;
+    color: #535D7F;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    cursor: not-allowed;
+    line-height: 30px;
+    border: none;
+    /* padding: 10px 24px; */
 }
 
 .create-avatar {
@@ -92,7 +108,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
+    /* cursor: pointer; */
     margin-left: 25px;
 }
 

@@ -43,6 +43,8 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
     const [showRichText, setShowRichText] = useState(false);
     const [showHtmlText, setShowHtmlText] = useState(false);
 
+    const btnSelected = !recipients || !senderName || !senderEmail || !subject || !message
+
     const [audience, setAudience] = useState(true)
     const [campaigns, setCampaigns] = useState(false)
 
@@ -162,7 +164,7 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                     <div className='create-buttons'>
                         <button>Schedule</button>
                         <button>Finish Later</button>
-                        <button onClick={handleSendCampaign}>Send</button>
+                        <button className={btnSelected ? 'disabled-btn' : 'able-btn'} onClick={handleSendCampaign}>Send</button>
                         <div className='create-avatar'>{avatar}</div>
                     </div>
                 </div>
