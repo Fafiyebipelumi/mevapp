@@ -8,6 +8,7 @@ import Upload from './pages/Upload';
 import CampaignDetails from './components/CampaignDetails';
 // import CreateOptions from './components/CreateOptions';
 import Create from './components/Create';
+import Login from './components/Login';
 // import RichText from './components/RichText';
 // import HtmlText from './components/HtmlText';
 // import CreateSidebar from './components/CreateSidebar';
@@ -28,7 +29,8 @@ function App() {
   return (
     !loading && (
       <Routes>
-        <Route exact path='/' element={<MessagingOption />} />
+        <Route exact path='/' element={<Login />} />
+        <Route exact path='/options' element={<MessagingOption />} />
         <Route path='/welcome' element={<EmailWelcome />} />
         <Route path='/campaign' element={<Campaign />} />
         <Route path='/campaign/:uuid' element={<CampaignDetails />} /> 

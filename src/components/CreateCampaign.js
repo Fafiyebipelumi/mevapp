@@ -9,7 +9,7 @@ import { toast, ToastContainer } from 'react-toastify';
 
 const CreateCampaign = () => {
     // const access_token = '01316e7b431202266a6ffcdcbaf91231762b7bc5ec741828b0b2130b5574429e3ca4a07913ae777f237731404c0ed26f27b087bbfaa28d0273c0244923fc3617'
-    const access_token = process.env.React_App_MEVAPP_ACCESS_TOKEN
+    const access_token = localStorage.getItem('token')
     const formData = new FormData();
     formData.append('access_token', access_token)
     formData.append('grant_type', 'access_token')
