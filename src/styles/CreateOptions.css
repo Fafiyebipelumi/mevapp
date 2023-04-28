@@ -693,6 +693,44 @@ option {
     font-weight: bold;
 }
 
+.next-btn {
+    background: #E5B404;
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Montserrat';
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px 20px;
+    border: none;
+    display: flex;
+    align-items: center;
+}
+
+.next-create-campaign-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0px 150px;
+}
+
+.previous-btn {
+    border: none;
+    padding: 10px 20px;
+    background: #F2EDDF;
+    border-radius: 10px;
+    color: #CB9F00;
+    font-style: normal;
+    font-family: 'Montserrat';
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
 /* .select-option-width {
     width: 35vw;
     padding: 7px;

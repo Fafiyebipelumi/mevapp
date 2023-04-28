@@ -23,6 +23,7 @@ import HtmlText from './HtmlText';
 import validator from 'validator';
 import Create from './Create';
 import ImportFromZoho from './ImportFromZoho';
+import { HiOutlineArrowNarrowLeft, HiOutlineArrowNarrowRight } from 'react-icons/hi';
 // , recipients, setRecipients, senderName, setSenderName, senderEmail, setSenderEmail, subject, setSubject, message, setMessage, csv, setCsv 
 const CreateOptions = ({ sidebar, showSidebar }) => {
     const [invalidEmail, setInvalidEmail] = useState('')
@@ -153,6 +154,15 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
             })
     }
 
+    const handleAudience = () => {
+        setAudience(true)
+        setCampaigns(false)
+    }
+    const handleCampaign = () => {
+        setAudience(false)
+        setCampaigns(true)
+    }
+
     return (
         <div>
             <div className='create'>
@@ -171,7 +181,7 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
             </div>
             <div className='create-option'>
                 <div className={sidebar ? 'create-menu active' : 'create-menu'}>
-                    <CreateSidebar audience={audience} campaigns={campaigns} setAudience={setAudience} setCampaigns={setCampaigns} />
+                    <CreateSidebar handleAudience={handleAudience} handleCampaign={handleCampaign} />
                 </div>
                 <div className='create-option-container'>
                     {/* <div className={sidebar ? 'create-option-edit' : 'create-option-editing'}>
@@ -180,24 +190,25 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                     </div> */}
                     <div className={sidebar ? 'create-option-wrap' : 'create-option-wrapper'}>
                         {audience && (
-                            <div className='create-option-group'>
-                                <h6>1</h6>
-                                <div className='create-option-items'>
-                                    <div className='create-option-item'>
-                                        <div className='create-option-heading'>
-                                            <h5>To</h5>
-                                            <h5>Who are you sending this campaign?</h5>
-                                        </div>
-                                        <div className={sidebar ? 'create-option-button' : 'create-option-button-active'}>
-                                            {dropdown ? <button onClick={showDropdown}>Add Recipient</button> : null}
-                                        </div>
-                                    </div>
-                                    <div className={dropdown ? 'create-option-clear' : 'create-option-select'}>
-                                        <div className={sidebar ? 'create-select-width' : 'create-select-width-active'}>
-                                            <div className='create-select-dropdown'>
-                                                <SelectDropdown loading={loading} showDropdown={showDropdown} setRecipients={setRecipients} handleSubmit={handleSubmit} setCsv={setCsv} />
+                            <>
+                                <div className='create-option-group'>
+                                    <h6>1</h6>
+                                    <div className='create-option-items'>
+                                        <div className='create-option-item'>
+                                            <div className='create-option-heading'>
+                                                <h5>To</h5>
+                                                <h5>Who are you sending this campaign?</h5>
                                             </div>
-                                            {/* <ToastContainer 
+                                            <div className={sidebar ? 'create-option-button' : 'create-option-button-active'}>
+                                                {dropdown ? <button onClick={showDropdown}>Add Recipient</button> : null}
+                                            </div>
+                                        </div>
+                                        <div className={dropdown ? 'create-option-clear' : 'create-option-select'}>
+                                            <div className={sidebar ? 'create-select-width' : 'create-select-width-active'}>
+                                                <div className='create-select-dropdown'>
+                                                    <SelectDropdown loading={loading} showDropdown={showDropdown} setRecipients={setRecipients} handleSubmit={handleSubmit} setCsv={setCsv} />
+                                                </div>
+                                                {/* <ToastContainer 
                                         position="top-right"
                                         autoClose={3000}
                                         hideProgressBar
@@ -208,7 +219,7 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                                         draggable
                                         pauseOnHover
                                     /> */}
-                                            {/* <div className='select-option' onClick={showTableEmail}>
+                                                {/* <div className='select-option' onClick={showTableEmail}>
                                         <span onClick={showTableEmail}>Choose an option</span>
                                         {<AiFillCaretDown style={{ cursor: 'pointer', fontSize: 20, color: '#aaa' }} onClick={showTableEmail} />}
                                     </div>
@@ -223,15 +234,17 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                                                 <h3 className={mevTable ? 'upload-email-none' : ''}>Upload email in CSV files</h3>
                                         </div>
                                     </div> */}
-                                        </div>
-                                        {/* <div className='create-option-buttons'>
+                                            </div>
+                                            {/* <div className='create-option-buttons'>
                                     <button>Save</button>
                                     <button onClick={showDropdown}>Cancel</button>
                                 </div> */}
+                                        </div>
                                     </div>
+                                    {/* <PopUp trigger={buttonPopup} setTrigger={setButtonPopup}></PopUp> */}
                                 </div>
-                                {/* <PopUp trigger={buttonPopup} setTrigger={setButtonPopup}></PopUp> */}
-                            </div>
+                                <button onClick={handleCampaign} className='next-btn'>Next <HiOutlineArrowNarrowRight style={{ marginLeft: 10 }} /></button>
+                            </>
                         )
                         }
                         {campaigns && (
@@ -365,6 +378,10 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                                             )}
                                         </div>
                                     </div>
+                                </div>
+                                <div className='next-create-campaign-btn'>
+                                    <button className='previous-btn' onClick={handleAudience}><HiOutlineArrowNarrowLeft style={{marginRight: 10}} /> Previous</button>
+                                    {/* <button className='next-btn'>Next</button> */}
                                 </div>
                             </>
                         )
