@@ -43,7 +43,7 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
     const [showRichText, setShowRichText] = useState(false);
     const [showHtmlText, setShowHtmlText] = useState(false);
 
-    const btnSelected = !recipients || !senderName || !senderEmail || !subject || !message
+    const btnSelected = !senderName || !senderEmail || !subject || !message
 
     const [audience, setAudience] = useState(true)
     const [campaigns, setCampaigns] = useState(false)
@@ -348,7 +348,7 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                                                 <div>
                                                     <RichText message={message} setMessage={setMessage} />
                                                     <div className='email-create-option-buttons'>
-                                                        <button onClick={handleSubmit}>Save</button>
+                                                        <button onClick={handleSubmit}>{!loading ? 'Save' : <TailSpin height='25' width='25' color='#3A915B' radius='3' visible={true} />}</button>
                                                         <span onClick={cancelRichText}>Cancel</span>
                                                     </div>
                                                 </div>
