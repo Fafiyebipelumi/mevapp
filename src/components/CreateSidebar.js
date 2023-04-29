@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import SettingIcon from '../assets/settings.png'
 import MEV from '../assets/Mevlogo.png'
 
-const CreateSidebar = ({handleAudience, handleCampaign}) => { 
+const CreateSidebar = ({handleAudience, handleCampaign, handleSettings}) => { 
     return (
         <div className='create-sidebar'>
             <div className='create-sidebar-container'>
@@ -21,7 +21,7 @@ const CreateSidebar = ({handleAudience, handleCampaign}) => {
                 <ul className='create-sidebar-links'>
                     <li onClick={handleAudience}><FaUsers style={{ color: '#57BF7E', marginRight: '10px', fontSize: '20px' }} />Audience</li>
                     <li onClick={handleCampaign}><SiCampaignmonitor style={{ color: '#57BF7E', marginRight: '10px', fontSize: '20px' }} />Campaign</li>
-                    <li><img src={SettingIcon} alt='Settings' />Settings</li>
+                    <li onClick={handleSettings}><img src={SettingIcon} alt='Settings' />Settings</li>
                 </ul>
             </div>
         </div>

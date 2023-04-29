@@ -30,8 +30,8 @@ function App() {
     !loading && (
       <Routes>
         <Route exact path='/' element={<Login />} />
-        <Route exact path='/options' element={<MessagingOption />} />
-        <Route path='/welcome' element={<EmailWelcome />} />
+        {/* <Route exact path='/options' element={<MessagingOption />} />
+        <Route path='/welcome' element={<EmailWelcome />} /> */}
         <Route path='/campaign' element={<Campaign />} />
         <Route path='/campaign/:uuid' element={<CampaignDetails />} /> 
         <Route path='/create/:uuid' element={<Create />} />

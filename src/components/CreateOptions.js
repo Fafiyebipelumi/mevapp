@@ -48,6 +48,7 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
 
     const [audience, setAudience] = useState(true)
     const [campaigns, setCampaigns] = useState(false)
+    const [settings, setSettings] = useState(false)
 
     const showDropdown = () => setDropdown(!dropdown);
     const showEmailDropdown = () => setEmailDropdown(!emailDropdown);
@@ -157,10 +158,17 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
     const handleAudience = () => {
         setAudience(true)
         setCampaigns(false)
+        setSettings(false)
     }
     const handleCampaign = () => {
         setAudience(false)
         setCampaigns(true)
+        setSettings(false)
+    }
+    const handleSettings = () => {
+        setAudience(false)
+        setCampaigns(false)
+        setSettings(true)
     }
 
     return (
@@ -181,7 +189,7 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
             </div>
             <div className='create-option'>
                 <div className={sidebar ? 'create-menu active' : 'create-menu'}>
-                    <CreateSidebar handleAudience={handleAudience} handleCampaign={handleCampaign} />
+                    <CreateSidebar handleAudience={handleAudience} handleCampaign={handleCampaign} handleSettings={handleSettings} />
                 </div>
                 <div className='create-option-container'>
                     {/* <div className={sidebar ? 'create-option-edit' : 'create-option-editing'}>
@@ -380,12 +388,19 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                                     </div>
                                 </div>
                                 <div className='next-create-campaign-btn'>
-                                    <button className='previous-btn' onClick={handleAudience}><HiOutlineArrowNarrowLeft style={{marginRight: 10}} /> Previous</button>
+                                    <button className='previous-btn' onClick={handleAudience}><HiOutlineArrowNarrowLeft style={{ marginRight: 10 }} /> Previous</button>
                                     {/* <button className='next-btn'>Next</button> */}
                                 </div>
                             </>
                         )
                         }
+                        {settings && (
+                            <div>
+                                <div>
+                                    <h2>Choose ESP</h2>
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
                 <ToastContainer

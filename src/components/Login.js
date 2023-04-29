@@ -5,7 +5,7 @@ import { baseURL } from "../interceptor/axios";
 import axios from "axios";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { SiZoho } from "react-icons/si";
+// import { SiZoho } from "react-icons/si";
 
 const Login = () => {
 
@@ -46,7 +46,7 @@ const Login = () => {
                     localStorage.setItem('token', token)
                     localStorage.setItem('email', email)
                     localStorage.setItem('name', name)
-                    navigate('/options')
+                    navigate('/campaign')
                     setBtnLoading('Login')
                 } else {
                     toast.error(response.data.description)

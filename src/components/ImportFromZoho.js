@@ -4,7 +4,7 @@ import { FaCaretDown } from "react-icons/fa";
 
 const ImportFromZoho = () => {
     const [isActive, setIsActive] = useState(false);
-    const [useTables, setUseTables] = useState(false);
+    const [useTables, setUseTables] = useState(false); 
 
     const handleGetTemplatesFromZoho = () => {
         setUseTables(!useTables)
