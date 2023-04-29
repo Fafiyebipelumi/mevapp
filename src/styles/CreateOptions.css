@@ -723,12 +723,40 @@ option {
     border-radius: 10px;
     color: #CB9F00;
     font-style: normal;
-    font-family: 'Montserrat';
+    font-family: 'Montserrat'; 
     cursor: pointer;
     font-weight: 600;
     font-size: 18px;
     display: flex;
     align-items: center;
+}
+
+.esp {
+    width: 500px;
+    user-select: none;
+    margin-top: 30px;
+    position: relative; 
+}
+
+.esp-content {
+    position: absolute;
+    top: 110%;
+    padding: 15px;
+    background: #fff;
+    box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+    font-weight: 500;
+    color: #333;
+    width: 95%;
+}
+
+.esp-item {
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.esp-item:hover {
+    background-color: #f4f4f4;
 }
 
 /* .select-option-width {

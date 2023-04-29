@@ -9,7 +9,7 @@ import RichTextImage from '../assets/text.png';
 import SelectDropdown from './SelectDropdown';
 import { TailSpin } from 'react-loader-spinner';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
-import { FaBars } from 'react-icons/fa';
+import { FaBars, FaCaretDown } from 'react-icons/fa';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 // import 'sweetalert2/src/sweetalert2.scss'
@@ -49,6 +49,32 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
     const [audience, setAudience] = useState(true)
     const [campaigns, setCampaigns] = useState(false)
     const [settings, setSettings] = useState(false)
+    const [sendgrid, setSendGrid] = useState('SendGrid')
+    const [ses, setSes] = useState('SES')
+    const [defaultOption, setDefaultOption] = useState('Default')
+    const [showSendGrid, setShowSendGrid] = useState(false)
+    const [showSes, setShowSes] = useState(false)
+    const [showDefaultOption, setShowDefaultOption] = useState(false)
+    const [useTables, setUseTables] = useState(false); 
+
+    const handleSelectSendGrid = () => {
+        setShowSendGrid(true)
+        setShowSes(false)
+        setSendGrid(sendgrid)
+        setUseTables(false)
+    }
+    const handleSelectSes = () => {
+        setShowSes(true)
+        setShowSendGrid(false)
+        setSes(ses)
+        setUseTables(false)
+    }
+    const handleSelectDefaultOption = () => {
+        setShowDefaultOption(true)
+        setShowSendGrid(false)
+        setDefaultOption(defaultOption)
+        setUseTables(false)
+    }
 
     const showDropdown = () => setDropdown(!dropdown);
     const showEmailDropdown = () => setEmailDropdown(!emailDropdown);
@@ -170,6 +196,16 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
         setCampaigns(false)
         setSettings(true)
     }
+
+
+
+    const handleGetTemplatesFromZoho = () => {
+        setUseTables(!useTables)
+        setShowSendGrid(false)
+        setShowSes(false)
+        setShowDefaultOption(false)
+    }
+
 
     return (
         <div>
@@ -395,9 +431,25 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                         )
                         }
                         {settings && (
-                            <div>
+                            <div className='esp'>
                                 <div>
                                     <h2>Choose ESP</h2>
+                                    <div className='esp-content'>
+                                        <div className='esp-item' style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} onClick={handleGetTemplatesFromZoho}>
+                                            {/* Choose Templates */}
+                                            <FaCaretDown />
+                                        </div>
+                                        {useTables && (
+                                            <div>
+                                                <p onClick={handleSelectSendGrid}>{sendgrid}</p>
+                                                <p onClick={handleSelectSes}>{ses}</p>
+                                                <p onClick={handleSelectDefaultOption}>{defaultOption}</p>
+                                            </div>
+                                        )}
+                                        {showSendGrid && <span>This campaign will be sent through - {sendgrid}</span>}
+                                        {showSes && <span>This campaign will be sent through - {ses}</span>}
+                                        {showDefaultOption && <span>This campaign will be sent by the {defaultOption} option</span>}
+                                    </div>
                                 </div>
                             </div>
                         )}
