@@ -64,7 +64,7 @@ const SelectDropdown = ({ showDropdown, setRecipients, handleSubmit, setCsv, loa
                 {isActive && (
                     <div className='dropdown-content'>
                         <div className='dropdown-item' onClick={handleUseTableEmails}>
-                            Use contact in MEV table
+                            Use contact in Zoho Recruit
                         </div>
                         {useTables && (
                             <div className='dropdown-table-emails'>

@@ -16,12 +16,12 @@ const Details = ({ detail, sidebar }) => {
                 {/* <div className='detail-container'> */}
                 <div className='detail__wrapper'> 
                     <h2>{detail.subject}</h2>
-                    <div className='detail-info'>
+                    <div className='detail-info'> 
                         <div className='detail-option'>
                             <span>From:</span>{' '}
                             <p>{detail.fromEmail}</p>
                         </div>
-                        <div className='detail-option'>
+                        {/* <div className='detail-option'>
                             <span>To:</span>{' '}
                             <p>{detail.recipient === null || '' ? 'No recipient' : `${detail.recipient.split(',').length} lists`}</p>
                         </div>
@@ -32,7 +32,7 @@ const Details = ({ detail, sidebar }) => {
                         <div className='detail-option'>
                             <span>Date:</span>{' '}
                             <p>{detail.createdAt}</p>
-                        </div>
+                        </div> */}
                     </div>
                     {/* <div className='detail-icons'>
                         <img src={MenuIcon} alt='Menu-Icon' />

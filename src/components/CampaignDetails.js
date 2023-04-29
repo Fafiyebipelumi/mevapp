@@ -73,7 +73,7 @@ const CampaignDetails = () => {
                 {campaignInfo.map((detail) => {
                     return (
                         <div className='detail-container' key={detail.id}>
-                            <div className='detail-wrapper'>
+                            <div className='detail-wrapper'> 
                                 <DetailSidebar detail={detail} />
                             </div>
                             <div className='details-active' >
