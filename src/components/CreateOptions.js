@@ -55,7 +55,7 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
     const [showSendGrid, setShowSendGrid] = useState(false)
     const [showSes, setShowSes] = useState(false)
     const [showDefaultOption, setShowDefaultOption] = useState(false)
-    const [useTables, setUseTables] = useState(false); 
+    const [useTables, setUseTables] = useState(false);
 
     const handleSelectSendGrid = () => {
         setShowSendGrid(true)
@@ -252,37 +252,7 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                                                 <div className='create-select-dropdown'>
                                                     <SelectDropdown loading={loading} showDropdown={showDropdown} setRecipients={setRecipients} handleSubmit={handleSubmit} setCsv={setCsv} />
                                                 </div>
-                                                {/* <ToastContainer 
-                                        position="top-right"
-                                        autoClose={3000}
-                                        hideProgressBar
-                                        newestOnTop={false}
-                                        closeOnClick
-                                        rtl={false}
-                                        pauseOnFocusLoss
-                                        draggable
-                                        pauseOnHover
-                                    /> */}
-                                                {/* <div className='select-option' onClick={showTableEmail}>
-                                        <span onClick={showTableEmail}>Choose an option</span>
-                                        {<AiFillCaretDown style={{ cursor: 'pointer', fontSize: 20, color: '#aaa' }} onClick={showTableEmail} />}
-                                    </div>
-                                    <div className={showAllTableEmail ? 'select-option-menu' : 'select-option-menu-clear'}>
-                                    <div className={sidebar ? 'select-option-width' : 'select-option-wide'}>
-                                            <h3 onClick={handleClick}>Use contact in MEV table</h3><hr />
-                                            <div className={mevTable ? 'select-option-tables' : 'select-option-none'}>
-                                                {tableEmails.map((userEmail) => (
-                                                    <DisplayTableEmail key={userEmail.id} userEmail={userEmail} isLoading={isLoading} error={error} />
-                                                ))}
-                                                </div>
-                                                <h3 className={mevTable ? 'upload-email-none' : ''}>Upload email in CSV files</h3>
-                                        </div>
-                                    </div> */}
                                             </div>
-                                            {/* <div className='create-option-buttons'>
-                                    <button>Save</button>
-                                    <button onClick={showDropdown}>Cancel</button>
-                                </div> */}
                                         </div>
                                     </div>
                                     {/* <PopUp trigger={buttonPopup} setTrigger={setButtonPopup}></PopUp> */}
@@ -430,29 +400,69 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                             </>
                         )
                         }
-                        {settings && (
-                            <div className='esp'>
-                                <div>
-                                    <h2>Choose ESP</h2>
-                                    <div className='esp-content'>
-                                        <div className='esp-item' style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} onClick={handleGetTemplatesFromZoho}>
-                                            {/* Choose Templates */}
-                                            <FaCaretDown />
-                                        </div>
-                                        {useTables && (
-                                            <div>
-                                                <p onClick={handleSelectSendGrid}>{sendgrid}</p>
-                                                <p onClick={handleSelectSes}>{ses}</p>
-                                                <p onClick={handleSelectDefaultOption}>{defaultOption}</p>
+                        <div>
+                            {settings && (
+                                <>
+                                    <div className='create-option-group'>
+                                        <h6>1</h6>
+                                        <div className='create-option-items'>
+                                            <div className='create-option-item'>
+                                                <div className='create-option-heading'>
+                                                    <h5>Choose ESP</h5>
+                                                    <div className='esp-content'>
+                                                        <div className='esp-item' style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} onClick={handleGetTemplatesFromZoho}>
+                                                            <FaCaretDown />
+                                                        </div>
+                                                        {useTables && (
+                                                            <div className='esp-options'>
+                                                                <p onClick={handleSelectSendGrid}>{sendgrid}</p>
+                                                                <p onClick={handleSelectSes}>{ses}</p>
+                                                                <p onClick={handleSelectDefaultOption}>{defaultOption}</p>
+                                                            </div>
+                                                        )}
+                                                        {showSendGrid && <span>This campaign will be sent through - {sendgrid}</span>}
+                                                        {showSes && <span>This campaign will be sent through - {ses}</span>}
+                                                        {showDefaultOption && <span>This campaign will be sent by the {defaultOption} option</span>}
+                                                    </div>
+                                                    {/* <h5>Who is sending this campaign?</h5> */}
+                                                </div>
                                             </div>
-                                        )}
-                                        {showSendGrid && <span>This campaign will be sent through - {sendgrid}</span>}
-                                        {showSes && <span>This campaign will be sent through - {ses}</span>}
-                                        {showDefaultOption && <span>This campaign will be sent by the {defaultOption} option</span>}
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        )}
+                                    <div className='create-option-group'>
+                                        <h6>2</h6>
+                                        <div className='create-option-items'>
+                                            <div className='create-option-item'>
+                                                <div className='create-option-heading'>
+                                                    <h5>When to send this email</h5>
+                                                    <div className='when-btns'>
+                                                        <button className='now'>Now</button>
+                                                        <button className='schedule'>Schedule</button>
+                                                    </div>
+                                                    {/* <h5>Who is sending this campaign?</h5> */}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className='create-option-group'>
+                                        <h6>3</h6>
+                                        <div className='create-option-items'>
+                                            <div className='create-option-item'>
+                                                <div className='create-option-heading'>
+                                                    <h5>Email Report</h5>
+                                                    <p style={{fontSize: 15, marginTop: 10}}>Do you want to see report?</p>
+                                                    <div className='report-btns'>
+                                                        <button className='yes'>Yes</button>
+                                                        <button className='no'>No</button>
+                                                    </div>
+                                                    {/* <h5>Who is sending this campaign?</h5> */}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </>
+                            )}
+                        </div>
                     </div>
                 </div>
                 <ToastContainer
@@ -472,10 +482,6 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
 }
 
 export default CreateOptions;
-
-
-
-
 
     // axios.post('https://api.mevstaging.com/messaging/userListCampaigns.php', form)
     //     .then((res) => {

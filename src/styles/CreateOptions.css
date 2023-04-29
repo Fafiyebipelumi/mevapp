@@ -732,21 +732,33 @@ option {
 }
 
 .esp {
-    width: 500px;
+    /* width: 80%; */
     user-select: none;
     margin-top: 30px;
     position: relative; 
 }
+/* 
+.esp-container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+} */
 
 .esp-content {
-    position: absolute;
-    top: 110%;
+    /* position: absolute; */
+    /* top: 110%; */
     padding: 15px;
     background: #fff;
     box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
     font-weight: 500;
     color: #333;
-    width: 95%;
+    width: 500px;
+    margin-top: 30px;
+    /* display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd; */
 }
 
 .esp-item {
@@ -758,6 +770,91 @@ option {
 .esp-item:hover {
     background-color: #f4f4f4;
 }
+
+.esp-options {
+    margin: 10px 5px;
+}
+
+.esp-options p {
+    margin: 10px 0px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.esp-options p:hover {
+    background-color: #f4f4f4;
+    /*  */
+    transition: all 0.2s;
+}
+
+.when-btns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+    margin: 20px 0px;
+}
+
+.when-btns .now {
+    border: none;
+    padding: 15px 20px;
+    background: #DDF2E5;
+    border-radius: 10px;
+    color: #3A915B;
+    cursor: pointer;
+    font-style: normal;
+    font-weight: 600;
+    font-family: 'Montserrat';
+    font-size: 18px;
+    margin: 0px 20px;
+}
+
+.when-btns .schedule {
+    border: none;
+    padding: 15px 20px;
+    background: #F2EDDF;
+    border-radius: 10px;
+    color: #CB9F00;
+    font-style: normal;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.report-btns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+    margin: 30px 0px;
+}
+
+.report-btns .yes {
+    border: none;
+    padding: 15px 20px;
+    background: #DDF2E5;
+    border-radius: 10px;
+    color: #3A915B;
+    cursor: pointer;
+    font-style: normal;
+    font-weight: 600;
+    font-family: 'Montserrat';
+    font-size: 18px;
+    margin: 0px 20px;
+}
+
+.report-btns .no {
+    border: none;
+    padding: 15px 20px;
+    background: #F2EDDF;
+    border-radius: 10px;
+    color: #CB9F00;
+    font-style: normal;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 18px;
+}
+
 
 /* .select-option-width {
     width: 35vw;
