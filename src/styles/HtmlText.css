@@ -69,9 +69,9 @@
 }
 
 .preview {
-    width: 700px;
+    width: 400px;
     /* background: #000; */
-    height: 300px;
+    height: 100px; 
     display: flex;
     align-items: center;
     justify-content: flex-start;

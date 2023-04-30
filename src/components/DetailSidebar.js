@@ -8,7 +8,7 @@ const DetailSidebar = ({ detail }) => {
                 <div className='detail-sidebar-report'>
                     <h3>Report</h3>
                 </div>
-                <div className='detail-sidebar-wrapper'>
+                <div className='detail-sidebar-wrapper'> 
                     <div className='detail-sidebar-options'>
                         <h3>Status</h3>
                         <p className='detail-status'>{detail.status}</p>

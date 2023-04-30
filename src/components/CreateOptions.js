@@ -44,8 +44,7 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
     const [showRichText, setShowRichText] = useState(false);
     const [showHtmlText, setShowHtmlText] = useState(false);
 
-    const btnSelected = !senderName || !senderEmail || !subject || !message
-
+    
     const [audience, setAudience] = useState(true)
     const [campaigns, setCampaigns] = useState(false)
     const [settings, setSettings] = useState(false)
@@ -80,7 +79,7 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
     const showEmailDropdown = () => setEmailDropdown(!emailDropdown);
     const showSubjectDropdown = () => setSubjectDropdown(!subjectDropdown);
     const showDesignDropdown = () => setDesignDropdown(!designDropdown);
-
+    
     const selectRichText = () => {
         setShowRichText(true)
         setHtmlText(false)
@@ -99,9 +98,9 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
         setShowHtmlText(false)
         setRichText(true)
     }
-
+    
     const navigate = useNavigate()
-
+    
     // const access_token = '01316e7b431202266a6ffcdcbaf91231762b7bc5ec741828b0b2130b5574429e3ca4a07913ae777f237731404c0ed26f27b087bbfaa28d0273c0244923fc3617'
     const access_token = localStorage.getItem('token')
     const name = localStorage.getItem('name')
@@ -143,28 +142,28 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                 setError(error.message)
                 setLoading(false)
             })
-    }
+        }
 
 
-    // const handleValidateEmail = (e) => {
-    //     const email = e.target.value
+        // const handleValidateEmail = (e) => {
+            //     const email = e.target.value
     //     setSenderEmail(email)
     //     if (validator.isEmail(email)) {
     //         setInvalidEmail('')
     //     } else {
-    //         setTimeout(() => setInvalidEmail('Invalid Email'), 3000)
-    //     }
+        //         setTimeout(() => setInvalidEmail('Invalid Email'), 3000)
+        //     }
     // }
-
+    
     const handleSendCampaign = async () => {
-
+        
         await axios.post(`${baseURL}/messaging/sesSendMail.php`, form)
             .then(response => {
                 if (response.data.status === 'success') {
                     alert("Congratulations!, you've successfully sent campaign.")
 
                     // Swal.fire(
-                    //     'Congratulations!',
+                        //     'Congratulations!',
                     //     'You have successfully sent campaign!',
                     //     'success'
                     // )
@@ -179,8 +178,8 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
             .catch((error) => {
                 setError(error.message)
             })
-    }
-
+        }
+        
     const handleAudience = () => {
         setAudience(true)
         setCampaigns(false)
@@ -196,17 +195,16 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
         setCampaigns(false)
         setSettings(true)
     }
-
-
-
+    
     const handleGetTemplatesFromZoho = () => {
         setUseTables(!useTables)
         setShowSendGrid(false)
         setShowSes(false)
         setShowDefaultOption(false)
     }
-
-
+    
+    const btnSelected = !senderName || !senderEmail || !subject || !message
+    
     return (
         <div>
             <div className='create'>

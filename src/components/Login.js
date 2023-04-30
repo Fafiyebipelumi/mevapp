@@ -5,6 +5,7 @@ import { baseURL } from "../interceptor/axios";
 import axios from "axios";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import MEV from '../assets/Mevlogo.png';
 // import { SiZoho } from "react-icons/si";
 
 const Login = () => {
@@ -31,34 +32,41 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if(!username || !password) {
-            toast.warning('Input all fields!');
-        } else {
-            setBtnLoading('Loading...')
-            await axios(getAuth)
-            .then((response) => {
-                console.log(response.data.messsage);
-                if (response.data.messsage === 'SUCCESS') {
-                    toast.success('Login Successful')
-                    const token = response.data.access_token
-                    const email = response.data.email
-                    const name = response.data.name
-                    localStorage.setItem('token', token)
-                    localStorage.setItem('email', email)
-                    localStorage.setItem('name', name)
-                    navigate('/campaign')
-                    setBtnLoading('Login')
-                } else {
-                    toast.error(response.data.description)
-                    setBtnLoading('Login')
-                }
-            })
-        
+        try {
+            if(!username || !password) {
+                toast.warning('Input all fields!');
+            } else {
+                setBtnLoading('Loading...')
+                await axios(getAuth)
+                .then((response) => {
+                    console.log(response.data.messsage);
+                    if (response.data.messsage === 'SUCCESS') {
+                        toast.success('Login Successful')
+                        const token = response.data.access_token
+                        const email = response.data.email
+                        const name = response.data.name
+                        localStorage.setItem('token', token)
+                        localStorage.setItem('email', email)
+                        localStorage.setItem('name', name)
+                        navigate('/campaign')
+                        setBtnLoading('Login')
+                    } else {
+                        toast.error(response.data.description)
+                        setBtnLoading('Login')
+                    }
+                })
+            
+            }
+        } catch (error) {
+            if (!error?.response) {
+                console.log(error.messsage);
+                // setErrorMsg('No Server Response');
+                toast.error('No Server Response')
+                setBtnLoading('Login')
+            }
         }
+        
         // console.error(error);
-        // if (!error?.response) {
-        //     // setErrorMsg('No Server Response');
-        //     toast.error('No Server Response')
         // } else if (error.response?.status === 400) {
         //     // setErrorMsg('Missing Username or Password');
         //     toast.error('Missing Username or Password')
@@ -90,7 +98,8 @@ const Login = () => {
             <div className="form">
                 <div className="login">
                     <div className="login-header">
-                        <h3>LOGIN</h3>
+                    <img src={MEV} alt='' width={50} height={50} />
+                        {/* <h3>LOGIN</h3> */}
                         <p>Please enter your credentials to login.</p>
                     </div>
                 </div>

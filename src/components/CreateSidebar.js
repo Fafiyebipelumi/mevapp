@@ -15,7 +15,7 @@ const CreateSidebar = ({handleAudience, handleCampaign, handleSettings}) => {
                     <Link to={'/campaign'}><img src={MEV} alt='mev-logo' width={40} height={40} /></Link>
                     {/* <FaBars style={{ color: '#57BF7E', fontSize: '25px', cursor: 'pointer' }} /> */}
                 </div>
-                <div className='create-sidebar-wrapper'>
+                <div className='create-sidebar-wrapper'> 
                     <span><IoMdCreate style={{ color: '#fff', fontSize: '25px' }} /></span><p>Create</p>
                 </div>
                 <ul className='create-sidebar-links'>

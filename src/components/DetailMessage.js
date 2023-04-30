@@ -11,7 +11,7 @@ const DetailMessage = ({ detail }) => {
                     <p>{parse(detail.message)}</p>
                 </div> 
             </Scrollbars>
-        </div>
+        </div> 
     )
 }
 

@@ -27,6 +27,8 @@ const CampaignDetails = () => {
 
     // const access_token = '01316e7b431202266a6ffcdcbaf91231762b7bc5ec741828b0b2130b5574429e3ca4a07913ae777f237731404c0ed26f27b087bbfaa28d0273c0244923fc3617'
     const access_token = localStorage.getItem('token')
+    const name = localStorage.getItem('name')
+    const avatar = name.split(' ').map(word => word[0]).join('');
     const { uuid } = useParams()
 
     const details = new FormData();
@@ -64,7 +66,7 @@ const CampaignDetails = () => {
                     <div className='new-search'>
                         {/* <FaSearch style={{ marginLeft: '30px', color: '#ccc' }} /><input type='text' value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Search Campaigns' /> */}
                     </div>
-                    <div className='avatar'></div>
+                    <div className='avatar'>{avatar}</div>
                 </div>
             </div>
             <div className='detail__container'>

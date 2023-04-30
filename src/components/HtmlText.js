@@ -28,7 +28,7 @@ const HtmlText = ({ message, setMessage }) => {
                     onChange={(env) => setMessage(env.target.value)}
                     padding={20}
                     style={{
-                        fontFamily: 'Montserrat', fontSize: 18, fontWeight: 600
+                        fontFamily: 'Montserrat', fontSize: 18, fontWeight: 600, width: 900
                     }}
                 />
                 <button onClick={() => setPreview(!preview)} className='preview-btn'>

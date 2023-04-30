@@ -1,16 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Papa from 'papaparse';
 import '../styles/InputCSV.css';
 
 const InputCSV = ({ setRecipients, setCsv }) => {
 
-    const handleFileChange = (e) => {
-        const file = e.target.files[0]
+    const [emails, setEmails] = useState([])
+
+    const handleFileUpload = (e) => {
+        const file = e.target.files[0];
         console.log(file);
-        const type = file.type
-        if (type === 'text/csv') {
-            setCsv(file)
-        }
+        // Papa.parse(file, {
+        //     header: true,
+        //     complete: (result) => {
+        //         const emailRegex = /\S+@\S+\.S+/;
+        //         const extractedEmails = result.data
+        //         .filter((row) => emailRegex.test(row.email))
+        //         .map((row) => row.email)
+        //         const allEmails = setEmails(extractedEmails)
+        //         console.log(allEmails);
+        //     }
+        // })
     }
+
+    // const handleFileChange = (e) => {
+    //     const file = e.target.files[0]
+    //     console.log(file); 
+    //     const type = file.type
+    //     if (type === 'text/csv') {
+    //         setCsv(file)
+    //     }
+    // }
 
     // const handleFileChange = (e) => {
     //     console.log(e.target.files[0])
@@ -33,7 +52,7 @@ const InputCSV = ({ setRecipients, setCsv }) => {
                     name='file'
                     type='file'
                     accept='.csv'
-                    onChange={handleFileChange}
+                    onChange={handleFileUpload}
                     className='custom-file-input'
                 />
                 {/* <div>
