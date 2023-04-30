@@ -16,10 +16,10 @@ const Details = ({ detail, sidebar }) => {
                 <div className='details'>
                     {/* <div className='detail-container'> */}
                     <div className='detail__wrapper'>
-                        <h2>{detail.subject}</h2>
+                        <h2>{detail.subject === null || '' ? 'No subject' : detail.subject}</h2> 
                         <div className='detail-option'>
                             <span>From:</span>{' '}
-                            <p>{detail.fromEmail}</p>
+                            <p>{detail.fromEmail === null || '' ? 'Null' : detail.fromEmail}</p>
                         </div>
                         <div className='detail-info'>
                             {/* <div className='detail-option'>

@@ -8,7 +8,7 @@ const DetailMessage = ({ detail }) => {
         <div className='detail-message'>
             <Scrollbars>
                 <div className='detail-message-container'>
-                    <p>{parse(detail.message)}</p>
+                    <p>{parse(detail.message === null || '' ? 'No message' : detail.message)}</p>
                 </div> 
             </Scrollbars>
         </div> 
