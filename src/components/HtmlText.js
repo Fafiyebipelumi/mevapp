@@ -1,12 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import '../styles/HtmlText.css';
 import CodeEditor, { SelectionText } from "@uiw/react-textarea-code-editor";
+import PopUp from './PopUp';
 
 const HtmlText = ({ message, setMessage }) => {
 
     const textRef = useRef();
 
     const [preview, setPreview] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
         if (textRef.current) {
@@ -15,6 +17,11 @@ const HtmlText = ({ message, setMessage }) => {
             console.log("obj:", obj)
         }
     }, [])
+
+    const handlePreview = () => {
+            setPreview(!preview)
+            setIsOpen(true)
+    }
 
     return (
         <div className='text-container'>
@@ -31,13 +38,15 @@ const HtmlText = ({ message, setMessage }) => {
                         fontFamily: 'Montserrat', fontSize: 18, fontWeight: 600, width: 900
                     }}
                 />
-                <button onClick={() => setPreview(!preview)} className='preview-btn'>
+                <button onClick={handlePreview} className='preview-btn'>
                     {preview ? 'Edit' : 'Preview'}
                 </button>
+                <PopUp isOpen={isOpen} onClose={() => setIsOpen(false)}>
+                    {preview ? (
+                        <div dangerouslySetInnerHTML={{ __html: message }} className='preview' />
+                    ) : null}
+                </PopUp>
             </div>
-                {preview ? (
-                    <div dangerouslySetInnerHTML={{__html: message}} className='preview' />
-                ) : null}
         </div>
     )
 }

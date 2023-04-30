@@ -10,14 +10,13 @@ label {
     font-size: 20px;
 }
 
-.custom-file-input::-webkit-file-upload-button {
+.custom-file-input::-webkit-file-upload-button { 
     visibility: hidden;
 }
 
 .custom-file-input::before {
     content: 'Select CSV file';
     display: inline-block;
-    /* background: linear-gradient(top, #f9f9f9, #e3e3e3); */
     background: #f4f4f4;
     border: 1px solid #999;
     color: #000;
@@ -26,7 +25,6 @@ label {
     padding: 5px 8px;
     outline: none;
     white-space: nowrap;
-    /* -webkit-user-select: none; */
     cursor: pointer;
     text-shadow: 1px 1px #fff;
     font-weight: 700;

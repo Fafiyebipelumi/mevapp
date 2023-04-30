@@ -69,8 +69,9 @@
 }
 
 .preview {
-    width: 400px;
+    width: 800px;
     /* background: #000; */
+    /* position: absolute; */
     height: 100px; 
     display: flex;
     align-items: center;

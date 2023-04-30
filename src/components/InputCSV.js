@@ -8,7 +8,16 @@ const InputCSV = ({ setRecipients, setCsv }) => {
 
     const handleFileUpload = (e) => {
         const file = e.target.files[0];
-        console.log(file);
+        // console.log(file);
+        const reader = new FileReader()
+        reader.onload = () => {
+            const emailRegex = /\S+@\S+\.S+/;
+            const lines = reader.result.split('\n');
+            const extractedEmails = lines
+            .map(line => line.split(',')[0])
+            .filter(email => emailRegex.test(email));
+            setEmails(extractedEmails)
+        }
         // Papa.parse(file, {
         //     header: true,
         //     complete: (result) => {
@@ -16,8 +25,8 @@ const InputCSV = ({ setRecipients, setCsv }) => {
         //         const extractedEmails = result.data
         //         .filter((row) => emailRegex.test(row.email))
         //         .map((row) => row.email)
-        //         const allEmails = setEmails(extractedEmails)
-        //         console.log(allEmails);
+        //         setEmails(extractedEmails)
+        //         // console.log(allEmails);
         //     }
         // })
     }
@@ -60,6 +69,10 @@ const InputCSV = ({ setRecipients, setCsv }) => {
                     onClick={handleParse}
                 </div> */}
             </div>
+            {/* <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span> */}
             {/* <div style={{ marginTop: '2rem' }}>
                 {error ? error : data.map((col, idx) => (
                     <div key={idx}>{col}</div>
