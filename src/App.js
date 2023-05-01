@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { EmailWelcome } from './components/EmailWelcome';
 import MessagingOption from './components/MessagingOption';
 import Campaign from './pages/Campaign';
@@ -16,6 +16,7 @@ import Login from './components/Login';
 function App() {
 
   const [loading, setLoading] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
 
   const spinner = document.getElementById('spinner')
 
@@ -29,10 +30,10 @@ function App() {
   return (
     !loading && (
       <Routes>
-        <Route exact path='/' element={<Login />} />
+        <Route exact path='/' element={<Login setIsAuthenticated={setIsAuthenticated} />} />
         {/* <Route exact path='/options' element={<MessagingOption />} />
         <Route path='/welcome' element={<EmailWelcome />} /> */}
-        <Route path='/campaign' element={<Campaign />} />
+        <Route path='/campaign' element={isAuthenticated ? <Navigate to={'/login'} /> : <Campaign />} />
         <Route path='/campaign/:uuid' element={<CampaignDetails />} /> 
         <Route path='/create/:uuid' element={<Create />} />
         <Route path='/upload' element={<Upload />} />

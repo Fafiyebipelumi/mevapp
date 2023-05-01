@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import MEV from '../assets/Mevlogo.png';
 // import { SiZoho } from "react-icons/si";
 
-const Login = () => {
+const Login = ({ setIsAuthenticated}) => {
 
     const LOGIN_URL = `${baseURL}/auth/login`;
     const navigate = useNavigate()
@@ -50,6 +50,7 @@ const Login = () => {
                         localStorage.setItem('name', name)
                         navigate('/campaign')
                         setBtnLoading('Login')
+                        setIsAuthenticated(true)
                     } else {
                         toast.error(response.data.description)
                         setBtnLoading('Login')
