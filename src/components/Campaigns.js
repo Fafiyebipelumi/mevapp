@@ -74,6 +74,7 @@ const Campaigns = () => {
                         <p><img src={FilterIcon} alt='' width='15px' height='7px' />Filter</p> */}
                         <div className='campaign-search'>
                             <FaSearch style={{ marginLeft: '30px', color: '#ccc' }} /><input type='text' value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Search Campaigns' />
+                            {/*<FaSearch style={{ color: '#677194' }} /><input type='text' placeholder='Search Instructors by email' value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />*/}
                         </div>
                     </div>
                 {/* </div> */}
@@ -81,7 +82,7 @@ const Campaigns = () => {
             <div className='campaign-table' style={{marginTop: 20}}>
                 {isLoading && <div className='loading-tables'><img src={Loading} alt='' /> <p>Loading Campaigns</p></div>}
                 {error && <div className='error'><img src={Sorry} /> {error} <p>Check your internet connection</p></div>}
-                {campaigns && <Table campaigns={campaigns} isLoading={isLoading} />}
+                {campaigns && <Table campaigns={campaigns} isLoading={isLoading} search={search} setSearch={setSearch} />}
             </div>
         </>
     )

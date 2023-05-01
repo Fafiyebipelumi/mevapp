@@ -33,10 +33,10 @@ function App() {
         <Route exact path='/' element={<Login setIsAuthenticated={setIsAuthenticated} />} />
         {/* <Route exact path='/options' element={<MessagingOption />} />
         <Route path='/welcome' element={<EmailWelcome />} /> */}
-        <Route path='/campaign' element={isAuthenticated ? <Navigate to={'/login'} /> : <Campaign />} />
-        <Route path='/campaign/:uuid' element={<CampaignDetails />} /> 
-        <Route path='/create/:uuid' element={<Create />} />
-        <Route path='/upload' element={<Upload />} />
+        <Route path='/campaign' element={isAuthenticated ? <Campaign /> : <Navigate to='/' />} />
+        <Route path='/campaign/:uuid' element={isAuthenticated ? <CampaignDetails /> : <Navigate to='/' />} />
+        <Route path='/create/:uuid' element={isAuthenticated ? <Create /> : <Navigate to='/' />} />
+        {/* <Route path='/upload' element={<Upload />} /> */}
         {/* <Route path='/content/:uuid/rich-text' element={<RichText />} />
         <Route path='/content/:uuid/html-text' element={<HtmlText />} /> */}
       </Routes>

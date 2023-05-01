@@ -6,18 +6,33 @@ import ReactPaginate from 'react-paginate';
 import NoTableFound from './NoTableFound';
 // import CreateCampaign from './CreateCampaign';
 
-const Table = ({ campaigns, isLoading }) => {
+const Table = ({ campaigns, isLoading, search, setSearch }) => {
 
     const [pageNumber, setPageNumber] = useState(0);
     const campaignPerPage = 6;
 
     const pagesVisited = pageNumber * campaignPerPage;
 
-    const displayCampaigns = !campaigns ? <NoTableFound /> : campaigns.slice(pagesVisited, pagesVisited + campaignPerPage).map((campaign, index) => {
+    const displayCampaigns = !campaigns ? <NoTableFound /> : campaigns.filter((item) => {
+        if(search === '') {
+            return item
+        } else if (item.subject === null){
+            return item
+        } 
+        else if(item.subject.toLowerCase().includes(search.toLowerCase())) {
+            return item
+        }
+        else {
+            return 'No campaign with such subject'
+        }
+    })
+    .map((campaign, index) => {
         return ( 
             <TableCampaign campaign={campaign} key={index} isLoading={isLoading} />
         )
     })
+    .slice(pagesVisited, pagesVisited + campaignPerPage)
+    
 
     const pageCount = Math.ceil(campaigns.length / campaignPerPage)
 
