@@ -66,7 +66,7 @@ const SelectDropdown = ({ showDropdown, setRecipients, handleSubmit, setCsv, loa
                         <div className='dropdown-item' onClick={handleUseTableEmails}>
                             Use contact in Zoho Recruit
                         </div>
-                        {useTables && (
+                        {/* {useTables && (
                             <div className='dropdown-table-emails'>
                                 {isLoading && <img src={Loading} alt='Loading' />}
                                 {error && <span>{error}</span>}
@@ -74,13 +74,13 @@ const SelectDropdown = ({ showDropdown, setRecipients, handleSubmit, setCsv, loa
                                     <DisplayTableEmail tableEmail={tableEmail} key={tableEmail.id} setRecipients={setRecipients} />
                                 ))}
                             </div>
-                        )}
-                        <div className={!useTables ? 'dropdown-item' : 'dropdown-none'} onClick={(e) => setUseCSV(!useCSV)}>
+                        )} */}
+                        {/* <div className={!useTables ? 'dropdown-item' : 'dropdown-none'} onClick={(e) => setUseCSV(!useCSV)}>
                             Upload email in CSV files
                         </div>
                         {useCSV && (
                             <InputCSV setRecipients={setRecipients} setCsv={setCsv} />
-                        )}
+                        )} */}
                     </div>
                 )}
             </div>

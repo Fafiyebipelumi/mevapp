@@ -68,7 +68,7 @@ const DisplayTableEmail = ({ tableEmail, setRecipients }) => {
 
     return (
         <div className='display-emails'>
-            <div className='display-emails-container'>
+            {/* <div className='display-emails-container'>
                 <div className='display-emails-list'>
                     <div onClick={(e) => setDropdownEmails(!dropdownEmails)}>
                         <div className='display-emails-item' onClick={getEmails}>
@@ -99,7 +99,7 @@ const DisplayTableEmail = ({ tableEmail, setRecipients }) => {
                         </div>
                     )}
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 }
