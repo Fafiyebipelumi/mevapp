@@ -8,13 +8,14 @@ import 'react-toastify/dist/ReactToastify.css';
 import InputCSV from './InputCSV'
 import { baseURL } from '../interceptor/axios';
 import Loading from '../assets/Loaders/loading_big.gif';
+import { Link } from 'react-router-dom';
 
 const SelectDropdown = ({ showDropdown, setRecipients, handleSubmit, setCsv, loading }) => {
 
     const [isActive, setIsActive] = useState(false);
     const [useTables, setUseTables] = useState(false);
     const [useCSV, setUseCSV] = useState(false);
-    const [tableEmails, setTableEmails] = useState([]);
+    const [emails, setEmails] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
     // 710a7b52d84e3dda0be93bfe557d21599768be49b297fd918ea0fd5e6b30a29d66ad288444816c259760628d26f1d4f58a48ddba0be72b7ecc65f4c3b0077666
@@ -28,30 +29,39 @@ const SelectDropdown = ({ showDropdown, setRecipients, handleSubmit, setCsv, loa
     const form = new FormData()
     form.append('access_token', access_token);
     form.append('grant_type', 'access_token');
+    form.append('fetch', 'true')
 
-    const connectToMevDB = {
+    const connectToZoho = {
         method: 'post',
-        url: `${baseURL}/database/getUserTables?access_token=${access_token}&grant_type=access_token`,
+        url: `${baseURL}/messaging/zohoRecruitAudience.php?access_token=${access_token}&grant_type=access_token&fetch=true`,
         headers: {
             'Content-Type': 'multipart/form-data'
         },
         data: form
     }
-    const handleUseTableEmails = () => {
+    const handleUseTableEmails = async () => {
         setUseTables(!useTables);
-        axios(connectToMevDB)
-            .then((response) => {
-                if (response.data.status === 'SUCCESSFUL') {
-                    setTableEmails(response.data.data);
-                    setIsLoading(false);
-                    setError(null);
-                }
-            })
-            .catch((err) => {
-                console.log(err); 
-                setIsLoading(false)
-                setError(err.message)
-            })
+        try {
+            const response = await axios(connectToZoho)
+            setEmails(response.data.data)
+        } catch (error) {
+            console.error(error);
+        }
+
+        // 
+        // axios(connectToMevDB)
+        //     .then((response) => {
+        //         if (response.data.status === 'SUCCESSFUL') {
+        //             setTableEmails(response.data.data);
+        //             setIsLoading(false);
+        //             setError(null);
+        //         }
+        //     })
+        //     .catch((err) => {
+        //         console.log(err); 
+        //         setIsLoading(false)
+        //         setError(err.message)
+        //     })
     }
 
     return (
@@ -66,15 +76,19 @@ const SelectDropdown = ({ showDropdown, setRecipients, handleSubmit, setCsv, loa
                         <div className='dropdown-item' onClick={handleUseTableEmails}>
                             Use contact in Zoho Recruit
                         </div>
-                        {/* {useTables && (
-                            <div className='dropdown-table-emails'>
-                                {isLoading && <img src={Loading} alt='Loading' />}
-                                {error && <span>{error}</span>}
-                                {!tableEmails ? 'No Tables Found ' : tableEmails.map((tableEmail) => (
-                                    <DisplayTableEmail tableEmail={tableEmail} key={tableEmail.id} setRecipients={setRecipients} />
-                                ))}
-                            </div>
-                        )} */}
+                        {useTables && (
+                            <>
+                                <div className='dropdown-table-emails'>
+                                    {/* {isLoading && <img src={Loading} alt='Loading' />}
+                                    {error && <span>{error}</span>} */}
+                                    {!emails ? 'No Tables Found ' : emails.map((email) => (
+                                        <DisplayTableEmail email={email} key={email.id} setRecipients={setRecipients} />
+                                    ))}
+                                </div>
+                                <a href='https://it-911.net/mev/v2/test/filter.php' target='_blank'>New Filter</a>
+                            </>
+
+                        )}
                         {/* <div className={!useTables ? 'dropdown-item' : 'dropdown-none'} onClick={(e) => setUseCSV(!useCSV)}>
                             Upload email in CSV files
                         </div>
