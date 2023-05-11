@@ -63,13 +63,18 @@
     margin-left: 10px;
 }
 
+.anchor {
+    text-decoration: none;
+    border: 1px solid #3A915B;
+    color: #3A915B;
+    padding: 8px;
+    font-size: 18px;
+    margin: 10px 0px;
+}
+
 .dropdown-none {
     display: none;
 }
-
-/* .dropdown-button {
-    float: right;
-} */
 
 .dropdown-button button {
     background: #DDF2E5;

@@ -85,7 +85,7 @@ const SelectDropdown = ({ showDropdown, setRecipients, handleSubmit, setCsv, loa
                                         <DisplayTableEmail email={email} key={email.id} setRecipients={setRecipients} />
                                     ))}
                                 </div>
-                                <a href='https://it-911.net/mev/v2/test/filter.php' target='_blank'>New Filter</a>
+                                <a className='anchor' href='https://it-911.net/mev/v2/test/filter.php' target='_blank'>New Filter</a>
                             </>
 
                         )}
