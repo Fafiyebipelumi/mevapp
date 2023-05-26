@@ -16,7 +16,7 @@ const SelectDropdown = ({ showDropdown, setRecipients, handleSubmit, setCsv, loa
     const [useTables, setUseTables] = useState(false);
     const [useCSV, setUseCSV] = useState(false);
     const [emails, setEmails] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     // 710a7b52d84e3dda0be93bfe557d21599768be49b297fd918ea0fd5e6b30a29d66ad288444816c259760628d26f1d4f58a48ddba0be72b7ecc65f4c3b0077666
     // ebf4c5c7897c61f6ebe6e9bafa108bea3663f1b6ad42c669753505e19769961ecce02acd625b0a5701d527c5f952f033ca8cb0bd97a22e1bedaf7bdf0a4cdb2c
@@ -42,10 +42,13 @@ const SelectDropdown = ({ showDropdown, setRecipients, handleSubmit, setCsv, loa
     const handleUseTableEmails = async () => {
         setUseTables(!useTables);
         try {
+            setIsLoading(true)
             const response = await axios(connectToZoho)
             setEmails(response.data.data)
+            setIsLoading(false)
         } catch (error) {
             console.error(error);
+            setIsLoading(false)
         }
 
         // 
@@ -79,8 +82,8 @@ const SelectDropdown = ({ showDropdown, setRecipients, handleSubmit, setCsv, loa
                         {useTables && (
                             <>
                                 <div className='dropdown-table-emails'>
-                                    {/* {isLoading && <img src={Loading} alt='Loading' />}
-                                    {error && <span>{error}</span>} */}
+                                    {isLoading && <img src={Loading} alt='Loading' />}
+                                    {error && <span>{error}</span>}
                                     {!emails ? 'No Tables Found ' : emails.map((email) => (
                                         <DisplayTableEmail email={email} key={email.id} setRecipients={setRecipients} />
                                     ))}
