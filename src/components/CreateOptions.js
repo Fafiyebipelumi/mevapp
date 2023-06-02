@@ -22,7 +22,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import HtmlText from './HtmlText';
 import validator from 'validator';
 import Create from './Create';
-import ImportFromZoho from './ImportFromZoho';
+import ImportTemplate from './ImportTemplates';
 import { HiOutlineArrowNarrowLeft, HiOutlineArrowNarrowRight } from 'react-icons/hi';
 // , recipients, setRecipients, senderName, setSenderName, senderEmail, setSenderEmail, subject, setSubject, message, setMessage, csv, setCsv 
 const CreateOptions = ({ sidebar, showSidebar }) => {
@@ -38,6 +38,8 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
     const [senderEmail, setSenderEmail] = useState('');
     const [subject, setSubject] = useState('');
     const [message, setMessage] = useState('');
+    const [selected_template_name, selectedTemplateInfo_name] = useState('');
+    const [selected_template_id, selectedTemplateInfo_id] = useState('');
     const [csv, setCsv] = useState(null);
     const [richText, setRichText] = useState(true)
     const [htmlText, setHtmlText] = useState(true)
@@ -202,6 +204,13 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
         setShowSes(false)
         setShowDefaultOption(false)
     }
+
+    const updateSelectedEmailTemplatetoUI = (template_id,template_name) => {
+        // alert(template_name)
+        selectedTemplateInfo_name(template_name);
+        selectedTemplateInfo_id(template_id);
+        // setSelectedFilterName(filter_name);
+    };
     
     const btnSelected = !senderName || !senderEmail || !subject || !message
     
@@ -239,7 +248,7 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                                         <div className='create-option-item'>
                                             <div className='create-option-heading'>
                                                 <h5>To</h5>
-                                                <h5>Who are you sending this campaign?</h5>
+                                                <h5>Who are you sending this campaign ?</h5>
                                             </div>
                                             <div className={sidebar ? 'create-option-button' : 'create-option-button-active'}>
                                                 {dropdown ? <button onClick={showDropdown}>Add Recipient</button> : null}
@@ -380,8 +389,8 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                                             )}
                                             {showHtmlText && (
                                                 <div>
-                                                    <ImportFromZoho />
-                                                    <HtmlText message={message} setMessage={setMessage} />
+                                                    <ImportTemplate selectedTemplate={updateSelectedEmailTemplatetoUI}/>
+                                                    <HtmlText message={message} setMessage={setMessage} selectedTemplate_name={selected_template_name} selectedTemplate_id={selected_template_id}/>
                                                     <div className='email-create-option-buttons'>
                                                         <button onClick={handleSubmit}>{!loading ? 'Save' : <TailSpin height='25' width='25' color='#3A915B' radius='3' visible={true} />}</button>
                                                         <span onClick={cancelHtmlText}>Cancel</span>

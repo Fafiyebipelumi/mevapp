@@ -18,6 +18,16 @@ const SelectDropdown = ({ showDropdown, setRecipients, handleSubmit, setCsv, loa
     const [emails, setEmails] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    const [selectedEmailId, setSelectedEmailId] = useState(null);
+    const [selectedEmailFilterName, setSelectedFilterName] = useState(null);
+    
+    const handleSelectedEmail = (emailId,filter_name) => {
+        setSelectedEmailId(emailId);
+        setSelectedFilterName(filter_name);
+        setIsActive(!isActive);
+    };
+
     // 710a7b52d84e3dda0be93bfe557d21599768be49b297fd918ea0fd5e6b30a29d66ad288444816c259760628d26f1d4f58a48ddba0be72b7ecc65f4c3b0077666
     // ebf4c5c7897c61f6ebe6e9bafa108bea3663f1b6ad42c669753505e19769961ecce02acd625b0a5701d527c5f952f033ca8cb0bd97a22e1bedaf7bdf0a4cdb2c
     // bfcbe6c811fea0f7ecb7768779c4a607e80c4bbb1e5b82317d8d2d6c5936a3fa48bfd64895734763f1442b0f44e64baa0e8d238416eb4c498c2ae6d748c91340
@@ -65,6 +75,7 @@ const SelectDropdown = ({ showDropdown, setRecipients, handleSubmit, setCsv, loa
     }
 
     return (
+        <div>
         <div className='dropdown-wrapper'>
             <div className='dropdown'>
                 <div className='dropdown-btn' onClick={(e) => setIsActive(!isActive)}>
@@ -78,14 +89,16 @@ const SelectDropdown = ({ showDropdown, setRecipients, handleSubmit, setCsv, loa
                         </div>
                         {useTables && (
                             <>
-                                <div className='dropdown-table-emails'>
+                                <div className='dropdown-table-emails custom-scroll'>
                                     {/* {isLoading && <img src={Loading} alt='Loading' />}
                                     {error && <span>{error}</span>} */}
-                                    {!emails ? 'No Tables Found ' : emails.map((email) => (
-                                        <DisplayTableEmail email={email} key={email.id} setRecipients={setRecipients} />
+                                    {!emails ? 'No Records Found ' : emails.map((email) => (
+                                        <DisplayTableEmail email={email} key={email.id} setRecipients={setRecipients} setSelectedEmailId={handleSelectedEmail}/>
                                     ))}
                                 </div>
-                                <a className='anchor' href='https://it-911.net/mev/v2/test/filter.php' target='_blank'>New Filter</a>
+                                <div className='mt-30'>
+                                    <a className='anchor' href='https://it-911.net/mev/v2/test/filter.php' target='_blank'>New Filter</a>
+                                </div>
                             </>
 
                         )}
@@ -95,11 +108,14 @@ const SelectDropdown = ({ showDropdown, setRecipients, handleSubmit, setCsv, loa
                         {useCSV && (
                             <InputCSV setRecipients={setRecipients} setCsv={setCsv} />
                         )} */}
+                        
                     </div>
                 )}
+
             </div>
             <div className='drop-down-button'>
                 <div className='dropdown-button'>
+                    <p>Filter ID : <b>{selectedEmailId}</b></p>
                     <button onClick={handleSubmit}>{!loading ? 'Save' : <TailSpin height='25' width='25' color='#3A915B' radius='3' visible={true} />}</button>
                     <button onClick={showDropdown}>Cancel</button>
                 </div>
@@ -116,6 +132,9 @@ const SelectDropdown = ({ showDropdown, setRecipients, handleSubmit, setCsv, loa
                 /> */}
             </div>
         </div>
+        <p>This email campaign will be sent to : <b>{selectedEmailFilterName}</b></p>
+        </div>
+
     )
 }
 

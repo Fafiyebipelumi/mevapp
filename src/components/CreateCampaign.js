@@ -55,6 +55,9 @@ const CreateCampaign = () => {
                 {/* <h1></h1> */}
                 <img src={MEV} alt='' width={50} height={50} />
                 <div>
+                    <a href="http://0.0.0.0:8081/list.php" target='_blank'><button className='ma-40'>Lists</button></a>
+
+                    <a href="http://0.0.0.0:8081/user.php" target='_blank'><button className='ma-40'>Settings</button></a>
                     {!btnLoading && <button onClick={handleCreateNewCampaign}><FaPlus style={{ border: '2px', paddingRight: '5px' }} /> New Campaign</button>}
                     {btnLoading && <button disabled style={{display: 'flex'}}>Loading...<TailSpin height='20' width='20' color='#fff' radius='1' visible={true} /></button>}
                 </div>

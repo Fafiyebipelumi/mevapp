@@ -73,10 +73,18 @@
     /* background: #000; */
     /* position: absolute; */
     height: 100px; 
-    display: flex;
+    display: flexs;
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
+}
+.preview-overflow{
+    width: 800px;
+    /* background: #000; */
+    /* position: absolute; */
+    height: 500px; 
+    display: flex;
+    overflow-y: auto;
 }
 
 .preview-btn {
@@ -91,6 +99,24 @@
     font-weight: 600;
     font-size: 15px;
     cursor: pointer;
+}
+
+.save-btn {
+    background: #050907;
+    margin-top: 50px;
+    border-radius: 10px;
+    padding: 10px 15px;
+    border: none;
+    color: #fff;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.mr20{
+    margin-left: 20px;;
 }
 
 /* .text-container {

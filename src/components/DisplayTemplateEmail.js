@@ -9,27 +9,27 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
 
-const DisplayTableEmail = ({email,setSelectedEmailId}) => { 
+const DisplayTemplateEmail = ({template_info,setSelectedTemplateId}) => { 
     const [dropdownEmails, setDropdownEmails] = useState(false);
     const [emails, setEmails] = useState([]);
     const [tableKey, setTableKey] = useState('');
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
 
-    const handleAudienceSelection = (e) => {
-        setSelectedEmailId(email.id,email.filter_name);
+    const handleTemplateSelection = (e) => {
+        setSelectedTemplateId(template_info.id,template_info.name);
         // onSelect(email.id, email.filter_name);
     };
 
     return (
         <div className='display-emails'>
             <div className='display-emails-container'>
-                <div className='display' onClick={handleAudienceSelection}>
-                    {email.filter_name}
+                <div className='display' onClick={handleTemplateSelection}>
+                    {template_info.name}
                 </div>
             </div>
         </div>
     );
 }
 
-export default DisplayTableEmail;
+export default DisplayTemplateEmail;
