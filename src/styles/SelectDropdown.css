@@ -3,7 +3,7 @@
     padding: 0;
 }
 
-.dropdown-wrapper { 
+.dropdown-wrapper {
     width: 100%;
     display: flex;
     align-items: center;
@@ -40,7 +40,7 @@
     padding: 15px;
     background: #fff;
     box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
-    font-weight: 500; 
+    font-weight: 500;
     color: #333;
     width: 95%;
 }
@@ -106,4 +106,16 @@
 
 .drop-down-button {
     float: right;
+}
+
+.custom-scroll {
+    max-height: 200px;
+    /* set the maximum height */
+    overflow-y: auto;
+    /* add a scrollbar when content exceeds the height */
+
+}
+
+.mt-30 {
+    margin-top: 30px !important;
 }

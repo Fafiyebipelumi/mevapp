@@ -29,3 +29,8 @@ h3 {
     font-size: 18px;
     border: none;
 }
+
+.ma-40 {
+    margin-left: 20px;
+    margin-right: 20px;
+}

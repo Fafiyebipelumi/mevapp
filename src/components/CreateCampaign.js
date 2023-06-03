@@ -15,25 +15,31 @@ const CreateCampaign = () => {
     formData.append('access_token', access_token)
     formData.append('grant_type', 'access_token')
 
-    const [btnLoading, setBtnLoading] = useState(false);
+    // function AddIcon() {
+    //     return <FaPlus style={{ border: '2px', paddingRight: '5px' }} />
+    // }
+
+    const [btnLoading, setBtnLoading] = useState(`New Campaign`);
     const [error, setError] = useState(null)
     const navigate = useNavigate();
 
     const handleCreateNewCampaign = async () => {
-        setBtnLoading(true)
+        setBtnLoading(<TailSpin height='20' width='20' color='#fff' radius='1' visible={true} />)
         await axios.post(`${baseURL}/messaging/userCreateEmptyCampaign.php`, formData)
             .then(response => {
                 setBtnLoading(false)
                 if (response.data.status === 'Error') {
                     toast.error(response.data.message)
                     // navigate('/campaign')
+                    setBtnLoading('New Campaign')
                 } else {
                     localStorage.setItem('campUUID', response.data.uuid)
                     navigate(`/create/${response.data.uuid}`)
+                    setBtnLoading('New Campaign')
                 }
             })
             .catch(err => {
-                setBtnLoading(false)
+                setBtnLoading('New Campaign')
                 setError(err.message)
             })
     }
@@ -54,9 +60,11 @@ const CreateCampaign = () => {
             <div className='create-campaign'>
                 {/* <h1></h1> */}
                 <img src={MEV} alt='' width={50} height={50} />
-                <div>
-                    {!btnLoading && <button onClick={handleCreateNewCampaign}><FaPlus style={{ border: '2px', paddingRight: '5px' }} /> New Campaign</button>}
-                    {btnLoading && <button disabled style={{display: 'flex'}}>Loading...<TailSpin height='20' width='20' color='#fff' radius='1' visible={true} /></button>}
+                <div style={{ marginRight: 50 }}>
+                    <a href="http://0.0.0.0:8081/list.php" target='_blank'><button className='ma-40'>Lists</button></a>
+                    <a href="http://0.0.0.0:8081/user.php" target='_blank'><button className='ma-40'>Settings</button></a>
+                    <button onClick={handleCreateNewCampaign}>{btnLoading}</button>
+                    {/* {btnLoading && <button disabled style={{ display: 'flex' }}>Loading...<TailSpin height='20' width='20' color='#fff' radius='1' visible={true} /></button>} */}
                 </div>
             </div>
         </div>

@@ -22,7 +22,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import HtmlText from './HtmlText';
 import validator from 'validator';
 import Create from './Create';
-import ImportFromZoho from './ImportFromZoho';
+import ImportTemplate from './ImportTemplates';
 import { HiOutlineArrowNarrowLeft, HiOutlineArrowNarrowRight } from 'react-icons/hi';
 // , recipients, setRecipients, senderName, setSenderName, senderEmail, setSenderEmail, subject, setSubject, message, setMessage, csv, setCsv 
 const CreateOptions = ({ sidebar, showSidebar }) => {
@@ -38,13 +38,17 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
     const [senderEmail, setSenderEmail] = useState('');
     const [subject, setSubject] = useState('');
     const [message, setMessage] = useState('');
+
+    const [selected_template_name, selectedTemplateInfo_name] = useState('');
+    const [selected_template_id, selectedTemplateInfo_id] = useState('');
+
     const [csv, setCsv] = useState(null);
     const [richText, setRichText] = useState(true)
     const [htmlText, setHtmlText] = useState(true)
     const [showRichText, setShowRichText] = useState(false);
     const [showHtmlText, setShowHtmlText] = useState(false);
 
-    
+
     const [audience, setAudience] = useState(true)
     const [campaigns, setCampaigns] = useState(false)
     const [settings, setSettings] = useState(false)
@@ -79,7 +83,7 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
     const showEmailDropdown = () => setEmailDropdown(!emailDropdown);
     const showSubjectDropdown = () => setSubjectDropdown(!subjectDropdown);
     const showDesignDropdown = () => setDesignDropdown(!designDropdown);
-    
+
     const selectRichText = () => {
         setShowRichText(true)
         setHtmlText(false)
@@ -98,9 +102,9 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
         setShowHtmlText(false)
         setRichText(true)
     }
-    
+
     const navigate = useNavigate()
-    
+
     // const access_token = '01316e7b431202266a6ffcdcbaf91231762b7bc5ec741828b0b2130b5574429e3ca4a07913ae777f237731404c0ed26f27b087bbfaa28d0273c0244923fc3617'
     const access_token = localStorage.getItem('token')
     const name = localStorage.getItem('name')
@@ -142,28 +146,28 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                 setError(error.message)
                 setLoading(false)
             })
-        }
+    }
 
 
-        // const handleValidateEmail = (e) => {
-            //     const email = e.target.value
+    // const handleValidateEmail = (e) => {
+    //     const email = e.target.value
     //     setSenderEmail(email)
     //     if (validator.isEmail(email)) {
     //         setInvalidEmail('')
     //     } else {
-        //         setTimeout(() => setInvalidEmail('Invalid Email'), 3000)
-        //     }
+    //         setTimeout(() => setInvalidEmail('Invalid Email'), 3000)
+    //     }
     // }
-    
+
     const handleSendCampaign = async () => {
-        
+
         await axios.post(`${baseURL}/messaging/sesSendMail.php`, form)
             .then(response => {
                 if (response.data.status === 'success') {
                     alert("Congratulations!, you've successfully sent campaign.")
 
                     // Swal.fire(
-                        //     'Congratulations!',
+                    //     'Congratulations!',
                     //     'You have successfully sent campaign!',
                     //     'success'
                     // )
@@ -178,8 +182,8 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
             .catch((error) => {
                 setError(error.message)
             })
-        }
-        
+    }
+
     const handleAudience = () => {
         setAudience(true)
         setCampaigns(false)
@@ -195,16 +199,23 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
         setCampaigns(false)
         setSettings(true)
     }
-    
+
     const handleGetTemplatesFromZoho = () => {
         setUseTables(!useTables)
         setShowSendGrid(false)
         setShowSes(false)
         setShowDefaultOption(false)
     }
-    
+
+    const updateSelectedEmailTemplatetoUI = (template_id, template_name) => {
+        // alert(template_name)
+        selectedTemplateInfo_name(template_name);
+        selectedTemplateInfo_id(template_id);
+        // setSelectedFilterName(filter_name);
+    };
+
     const btnSelected = !senderName || !senderEmail || !subject || !message
-    
+
     return (
         <div>
             <div className='create'>
@@ -239,7 +250,7 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                                         <div className='create-option-item'>
                                             <div className='create-option-heading'>
                                                 <h5>To</h5>
-                                                <h5>Who are you sending this campaign?</h5>
+                                                <h5>Who are you sending this campaign ?</h5>
                                             </div>
                                             <div className={sidebar ? 'create-option-button' : 'create-option-button-active'}>
                                                 {dropdown ? <button onClick={showDropdown}>Add Recipient</button> : null}
@@ -380,8 +391,8 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                                             )}
                                             {showHtmlText && (
                                                 <div>
-                                                    <ImportFromZoho />
-                                                    <HtmlText message={message} setMessage={setMessage} />
+                                                    <ImportTemplate selectedTemplate={updateSelectedEmailTemplatetoUI} />
+                                                    <HtmlText message={message} setMessage={setMessage} selectedTemplate_name={selected_template_name} selectedTemplate_id={selected_template_id} />
                                                     <div className='email-create-option-buttons'>
                                                         <button onClick={handleSubmit}>{!loading ? 'Save' : <TailSpin height='25' width='25' color='#3A915B' radius='3' visible={true} />}</button>
                                                         <span onClick={cancelHtmlText}>Cancel</span>
@@ -448,7 +459,7 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                                             <div className='create-option-item'>
                                                 <div className='create-option-heading'>
                                                     <h5>Email Report</h5>
-                                                    <p style={{fontSize: 15, marginTop: 10}}>Do you want to see report?</p>
+                                                    <p style={{ fontSize: 15, marginTop: 10 }}>Do you want to see report?</p>
                                                     <div className='report-btns'>
                                                         <button className='yes'>Yes</button>
                                                         <button className='no'>No</button>
