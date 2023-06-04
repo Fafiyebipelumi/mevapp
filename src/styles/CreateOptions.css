@@ -725,7 +725,7 @@ option {
     border-radius: 10px;
     color: #CB9F00;
     font-style: normal;
-    font-family: 'Montserrat'; 
+    font-family: 'Montserrat';
     cursor: pointer;
     font-weight: 600;
     font-size: 18px;
@@ -737,8 +737,9 @@ option {
     /* width: 80%; */
     user-select: none;
     margin-top: 30px;
-    position: relative; 
+    position: relative;
 }
+
 /* 
 .esp-container {
     display: flex;
@@ -798,21 +799,42 @@ option {
 }
 
 .when-btns .now {
-    border: none;
-    padding: 15px 20px;
-    background: #DDF2E5;
+    border: 1px solid #3A915B;
+    background: #fff;
     border-radius: 10px;
-    color: #3A915B;
+    padding: 15px 20px;
     cursor: pointer;
+    color: #3A915B;
     font-style: normal;
     font-weight: 600;
     font-family: 'Montserrat';
     font-size: 18px;
     margin: 0px 20px;
+    transition: all 0.5s ease-in-out;
 }
 
-.when-btns .schedule {
-    border: none;
+.when-btns .now:hover {
+    background: #DDF2E5;
+    color: #3A915B;
+    /* transition: all 0.5s ease-in-out; */
+}
+
+.clicked-active {
+    font-style: normal;
+    border: 2px solid #3A915B;
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 15px 20px;
+    cursor: pointer;
+    font-family: 'Montserrat';
+    font-size: 18px;
+    margin: 0px 20px;
+    background-color: #DDF2E5;
+    color: #3A915B;
+}
+
+.clicked-active-schedule {
+    border: 2px solid #CB9F00;
     padding: 15px 20px;
     background: #F2EDDF;
     border-radius: 10px;
@@ -822,6 +844,81 @@ option {
     font-weight: 600;
     font-size: 18px;
     cursor: pointer;
+}
+
+.input-label-schedule {
+    border: 1px solid #CB9F00;
+    padding: 15px 20px;
+    background: #fff;
+    border-radius: 10px;
+    color: #CB9F00;
+    font-style: normal;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+
+.input-label-schedule:hover {
+    background: #F2EDDF;
+    color: #CB9F00;
+}
+
+/* .when-btns #now:active {
+    background-color: #DDF2E5;
+} */
+
+
+/* .input-label-schedule {
+    background-color: #F2EDDF;
+    outline: none;
+    width: 500px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+}
+
+#myDate {
+    display: none;
+}
+
+.input-label-schedule::-webkit-clear-button {
+    font-size: 18px;
+    height: 30px;
+    position: relative;
+}
+
+.input-label-schedule::-webkit-inner-spin-button {
+    height: 28px;
+}
+
+.input-label-schedule::-webkit-calendar-picker-indicator {
+    font-size: 15px;
+} */
+
+input[type="date"] {
+    background-color: #F2EDDF;
+    outline: none;
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    margin: 0px 40px;
+}
+
+input[type="date"]::-webkit-clear-button {
+    font-size: 18px;
+    height: 30px;
+    position: relative;
+}
+
+input[type="date"]::-webkit-inner-spin-button {
+    height: 28px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    font-size: 15px;
 }
 
 .report-btns {

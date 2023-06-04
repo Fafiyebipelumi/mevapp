@@ -59,6 +59,23 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
     const [showSes, setShowSes] = useState(false)
     const [showDefaultOption, setShowDefaultOption] = useState(false)
     const [useTables, setUseTables] = useState(false);
+    const [showDatePicker, setShowDatePicker] = useState(false);
+    const [changeColor, setChangeColor] = useState(false)
+    const [changeScheduleColor, setChangeScheduleColor] = useState(false)
+
+    const [selectedDate, setSelectedDate] = useState('')
+
+    const handleChangeBgColor = () => {
+        setChangeColor(!changeColor)
+    }
+    // const handleChangeBgScheduleColor = () => {
+    //     setChangeColor(!changeColor)
+    // }
+
+    const handleDataChange = (e) => {
+        const dateValue = e.target.value;
+        setSelectedDate(dateValue)
+    }
 
     const handleSelectSendGrid = () => {
         setShowSendGrid(true)
@@ -214,7 +231,17 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
         // setSelectedFilterName(filter_name);
     };
 
+    const handleShowDatePicker = () => {
+        setShowDatePicker(!showDatePicker)
+        setChangeScheduleColor(!changeScheduleColor)
+    }
+
     const btnSelected = !senderName || !senderEmail || !subject || !message
+
+    // const btnClicked = document.getElementById('now')
+    // btnClicked.addEventListener('click', () => {
+    //     btnClicked.classList.add('button-clicked')
+    // })
 
     return (
         <div>
@@ -420,9 +447,10 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                                                     <h5>Choose ESP</h5>
                                                     <div className='esp-content'>
                                                         <div className='esp-item' style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} onClick={handleGetTemplatesFromZoho}>
-                                                            <FaCaretDown />
+                                                            {/* <FaCaretDown /> */}
+                                                            <span>This campaign will be sent through - {sendgrid}</span>
                                                         </div>
-                                                        {useTables && (
+                                                        {/* {useTables && (
                                                             <div className='esp-options'>
                                                                 <p onClick={handleSelectSendGrid}>{sendgrid}</p>
                                                                 <p onClick={handleSelectSes}>{ses}</p>
@@ -431,7 +459,7 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                                                         )}
                                                         {showSendGrid && <span>This campaign will be sent through - {sendgrid}</span>}
                                                         {showSes && <span>This campaign will be sent through - {ses}</span>}
-                                                        {showDefaultOption && <span>This campaign will be sent by the {defaultOption} option</span>}
+                                                        {showDefaultOption && <span>This campaign will be sent by the {defaultOption} option</span>} */}
                                                     </div>
                                                     {/* <h5>Who is sending this campaign?</h5> */}
                                                 </div>
@@ -445,8 +473,12 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                                                 <div className='create-option-heading'>
                                                     <h5>When to send this email</h5>
                                                     <div className='when-btns'>
-                                                        <button className='now'>Now</button>
-                                                        <button className='schedule'>Schedule</button>
+                                                        <button className={changeColor === true ? 'clicked-active' : 'now'} onClick={handleChangeBgColor}>Now</button>
+                                                        {/* <button className='schedule'>Schedule</button> */}
+                                                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                                            <button className={changeScheduleColor === true ? 'clicked-active-schedule' : 'input-label-schedule'} onClick={handleShowDatePicker} >Schedule</button>
+                                                            {showDatePicker && <input type='date' value={selectedDate} name='schedule' id='myDate' onChange={handleDataChange} />}
+                                                        </div>
                                                     </div>
                                                     {/* <h5>Who is sending this campaign?</h5> */}
                                                 </div>
@@ -462,7 +494,7 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                                                     <p style={{ fontSize: 15, marginTop: 10 }}>Do you want to see report?</p>
                                                     <div className='report-btns'>
                                                         <button className='yes'>Yes</button>
-                                                        <button className='no'>No</button>
+                                                        {/* <button className='no'>No</button> */}
                                                     </div>
                                                     {/* <h5>Who is sending this campaign?</h5> */}
                                                 </div>
