@@ -159,9 +159,11 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
     
     const handleSendCampaign = async () => {
         
-        await axios.post(`${baseURL}/messaging/sesSendMail.php`, form)
+        // add an extra form field
+        
+        await axios.post(`${baseURL}/messaging/userUpdateCampaign.php?snow`, form)
             .then(response => {
-                if (response.data.status === 'success') {
+                if (response.data.status === 'Success') {
                     alert("Congratulations!, you've successfully sent campaign.")
 
                     // Swal.fire(
@@ -337,7 +339,7 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                                                         onChange={(e) => setSubject(e.target.value)}
                                                     />
                                                     <input
-                                                        type='email'
+                                                        type='text'
                                                         placeholder='Preview Text'
                                                     />
                                                     <div className='email-create-option-buttons'>
@@ -389,7 +391,8 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                                             )}
                                             {showHtmlText && (
                                                 <div>
-                                                    <ImportTemplate selectedTemplate={updateSelectedEmailTemplatetoUI}/>
+                                                    <ImportTemplate setMessage={setMessage} selectedTemplate={updateSelectedEmailTemplatetoUI}/>
+                                                    <p>Selected Template: <b>{selected_template_name}</b></p>
                                                     <HtmlText message={message} setMessage={setMessage} selectedTemplate_name={selected_template_name} selectedTemplate_id={selected_template_id}/>
                                                     <div className='email-create-option-buttons'>
                                                         <button onClick={handleSubmit}>{!loading ? 'Save' : <TailSpin height='25' width='25' color='#3A915B' radius='3' visible={true} />}</button>

@@ -71,17 +71,17 @@ const HtmlText = ({ message, setMessage,selectedTemplate_name,selectedTemplate_i
     return (
         <div className='text-container'>
             <div data-color-mode='light' className='text-editor'>
-                <h2>Title Your New Template</h2>
-                <input type="text"
+                {/* <h2>Title Your New Template</h2> */}
+                {/* <input type="text"
                     placeholder="Enter a name for this template"
                     name="template_name"
                     id="email_template_name"
                     value={selectedTemplate_name}
                     onChange={(e) => selectedTemplate_name(e.target.value)}
                     style={{width:'100%', height:40}}
-                />
-                <h2>Paste your HTML code here</h2>
-                <CodeEditor
+                /> */}
+                {/* <h2>Paste your HTML code here</h2> */}
+                {/* <CodeEditor
                     value={message}
                     ref={textRef}
                     language='html'
@@ -91,15 +91,15 @@ const HtmlText = ({ message, setMessage,selectedTemplate_name,selectedTemplate_i
                     style={{
                         fontFamily: 'Montserrat', fontSize: 18, fontWeight: 600, width: 900, maxHeight: '500px', overflow: 'auto'
                     }}
-                />
+                /> */}
 
-                <button onClick={handlePreview} className='preview-btn'>
+                {/* <button onClick={handlePreview} className='preview-btn'>
                     {preview ? 'Edit' : 'Preview'}
-                </button>
+                </button> */}
 
-                <button onClick={handleSaveEmailTemplate} className='save-btn mr20'>
+                {/* <button onClick={handleSaveEmailTemplate} className='save-btn mr20'>
                     Save Email Template
-                </button>
+                </button> */}
                 <PopUp isOpen={isOpen} onClose={handlePopupClose}>
                     {preview ? (
                         <div className='preview'>

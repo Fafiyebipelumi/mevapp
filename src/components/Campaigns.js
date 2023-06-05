@@ -48,6 +48,11 @@ const Campaigns = () => {
                     setCampaigns(response.data.data)
                     setIsLoading(false)
                     setError(null)
+                }else{
+                    setCampaigns(response.data.data)
+                    setIsLoading(false)
+                    setError(null)
+
                 }
             })
             .catch((err) => {

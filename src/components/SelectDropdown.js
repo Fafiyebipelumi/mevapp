@@ -24,6 +24,7 @@ const SelectDropdown = ({ showDropdown, setRecipients, handleSubmit, setCsv, loa
     
     const handleSelectedEmail = (emailId,filter_name) => {
         setSelectedEmailId(emailId);
+        setRecipients("template:"+emailId);
         setSelectedFilterName(filter_name);
         setIsActive(!isActive);
     };

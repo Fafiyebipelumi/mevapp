@@ -5,7 +5,7 @@ import { FaCaretDown } from "react-icons/fa";
 import { baseURL } from '../interceptor/axios';
 import axios from 'axios';
 
-const ImportTemplate = ({selectedTemplate}) => {
+const ImportTemplate = ({selectedTemplate,setMessage}) => {
     const [isActive, setIsActive] = useState(false);
     const [useTables, setUseTables] = useState(false); 
     const [templateEmails, setTemplateEmails] = useState([]);
@@ -58,6 +58,7 @@ const ImportTemplate = ({selectedTemplate}) => {
         setIsActive(!isActive);
     }
     const handleSelectedTemplateId = (temp_id,temp_name) => {
+        setMessage("template:"+temp_id)
         selectedTemplate(temp_id,temp_name)
         setIsActive(!isActive);
     };

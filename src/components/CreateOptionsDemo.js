@@ -97,7 +97,7 @@ const CreateOptions = ({ sidebar, showSidebar }) => {
                             <div className={subjectDropdown ? 'email-create-option-clear' : 'email-create-option-select'}>
                                 <div className={sidebar ? 'create-input' : 'create-inputs'}>
                                     <input type='text' placeholder='Subject' />
-                                    <input type='email' placeholder='Preview Text' />
+                                    <input type='text' placeholder='Preview Text' />
                                 </div>
                                 <div className='email-create-option-buttons'>
                                     <button>Save</button>
